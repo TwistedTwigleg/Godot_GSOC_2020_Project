@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/3D_Fox/Fox.glb" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Skeleton_Test_02/Fox_SkeletonModificationStack3d.tres" type="SkeletonModificationStack3D" id=2]
 
 [sub_resource type="Environment" id=1]
 ambient_light_source = 2
@@ -9,10 +10,10 @@ ambient_light_color = Color( 0.48, 0.48, 0.48, 1 )
 [sub_resource type="PlaneMesh" id=2]
 size = Vector2( 20, 20 )
 
-[sub_resource type="SkeletonModification3D_LookAt" id=3]
-enabled = true
-bone_name = "b_head_5"
-target_nodepath = NodePath("../../../LookAtTarget")
+[sub_resource type="SphereMesh" id=3]
+
+[sub_resource type="StandardMaterial3D" id=4]
+albedo_color = Color( 0.0509804, 0.933333, 0.105882, 1 )
 
 [node name="Skeleton_Test_02" type="Node3D"]
 script = null
@@ -39,13 +40,39 @@ script = null
 transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
 
 [node name="Skeleton" parent="Fox/root" index="0"]
-skeleton_modification_strength = 1.0
-bone_axis_mode = 5
-skeleton_modifications_count = 1
-Modifications/0 = SubResource( 3 )
+bones/2/pose = Transform( 0.991673, 0.128783, 3.28014e-07, -0.128783, 0.991673, -1.26033e-07, -3.41513e-07, 8.27408e-08, 1, -7.24759, -6.73677, 6.44038e-06 )
+bones/3/pose = Transform( 0.997543, -0.0700554, -3.31165e-07, 0.0700554, 0.997543, 6.4381e-08, 3.25841e-07, -8.74228e-08, 1, 0, 0, 0 )
+bones/4/pose = Transform( 0.886911, -0.46194, 4.33549e-08, 0.46194, 0.886911, -8.32399e-08, -9.23706e-14, 9.38538e-08, 1, 0, 0, 0 )
+bones/5/pose = Transform( 0.692721, 0.721206, -4.63513e-15, -0.721206, 0.692721, -4.45206e-15, 0, 6.42692e-15, 1, 0, 0, 0 )
+bones/6/pose = Transform( 0.899765, -0.436375, 1.57792e-08, 0.436375, 0.899765, -3.25353e-08, -8.88178e-16, 3.61598e-08, 1, 0, 0, 0 )
+bones/7/pose = Transform( 0.906331, 0.422381, -0.0125911, -0.42239, 0.906412, 0.00211645, 0.0123066, 0.00340013, 0.999918, 0, 0, 0 )
+bones/8/pose = Transform( 0.210254, -0.977647, 7.27424e-08, 0.977647, 0.210254, -1.61204e-08, 4.65668e-10, 7.45058e-08, 1, 0, 0, 0 )
+bones/9/pose = Transform( -0.174077, 0.984389, 0.0259867, -0.984082, -0.172943, -0.0408899, -0.0357574, -0.0326911, 0.998826, 0, 0, 0 )
+bones/10/pose = Transform( 0.205552, 0.978631, 0.00541829, -0.96444, 0.201625, 0.170891, 0.166147, -0.0403526, 0.985275, 0, 0, 0 )
+bones/11/pose = Transform( 0.0601039, -0.998192, 1.07614e-07, 0.998192, 0.0601039, -1.02118e-08, 3.72529e-09, 1.08033e-07, 1, 0, 0, 0 )
+bones/12/pose = Transform( -0.733939, 0.651442, -0.192244, -0.664209, -0.747542, 0.00264473, -0.141988, 0.129631, 0.981344, 0, 0, 0 )
+bones/13/pose = Transform( 0.999894, -0.0145743, 3.56151e-07, 0.0145743, 0.999894, -5.27498e-07, -3.48425e-07, 5.32632e-07, 1, 0, 0, 0 )
+bones/14/pose = Transform( 0.934149, 0.356883, 5.56539e-22, -0.356883, 0.934149, -4.48926e-22, -6.80105e-22, 2.20745e-22, 1, 0, 0, 0 )
+bones/15/pose = Transform( 0.951243, 0.308441, 4.17325e-22, -0.308441, 0.951243, 4.64332e-23, -3.82656e-22, -1.72889e-22, 1, 0, 0, 0 )
+bones/16/pose = Transform( 0.84613, -0.526329, 0.0839156, 0.508819, 0.844567, 0.166762, -0.158644, -0.0984045, 0.98242, 0, 0, 0 )
+bones/17/pose = Transform( 0.799537, 0.600617, 3.72385e-08, -0.600617, 0.799537, -1.86552e-08, -4.09782e-08, -7.45058e-09, 1, 0, 0, 0 )
+bones/18/pose = Transform( 0.844485, -0.490827, -0.21432, 0.519032, 0.848712, 0.101457, 0.132098, -0.196918, 0.97148, 0, 0, 0 )
+bones/20/pose = Transform( 0.440406, -0.897471, -0.0242465, 0.883494, 0.438032, -0.16603, 0.159628, 0.051699, 0.985823, 0, 0, 0 )
+bones/21/pose = Transform( 0.919397, 0.393332, 3.47814e-08, -0.393332, 0.919397, -8.67555e-09, -3.53903e-08, -5.70435e-09, 1, 0, 0, 0 )
+bones/22/pose = Transform( 0.955673, -0.173113, 0.23816, 0.228884, 0.945625, -0.231095, -0.185204, 0.275363, 0.943332, 0, 0, 0 )
+Modification_Stack = ExtResource( 2 )
 
 [node name="LookAtTarget" type="Position3D" parent="."]
-transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -5.57465, 1.72285, 3.70418 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55199, 3.28408, 3.52216 )
+script = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LookAtTarget"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
 script = null
 
 [editable path="Fox"]

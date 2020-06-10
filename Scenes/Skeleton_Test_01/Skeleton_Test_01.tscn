@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/3D_Robotic_Arm/Godot_CCDIK_Arm.glb" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Skeleton_Test_01/GDScript_Bone_Test_01.gd" type="Script" id=2]
@@ -12,7 +12,7 @@ size = Vector2( 20, 20 )
 
 [sub_resource type="SkeletonModification3D_LookAt" id=3]
 enabled = true
-bone_name = "joint_0"
+bone_name = "joint_1"
 target_nodepath = NodePath("../../../LookAt_Target")
 
 [sub_resource type="SkeletonModification3D_LookAt" id=4]
@@ -20,14 +20,20 @@ enabled = true
 bone_name = "joint_2"
 target_nodepath = NodePath("../../../LookAt_Target2")
 
-[sub_resource type="SphereMesh" id=5]
+[sub_resource type="SkeletonModificationStack3D" id=5]
+strength = 1.0
+modification_count = 2
+Modifications/0 = SubResource( 3 )
+Modifications/1 = SubResource( 4 )
 
-[sub_resource type="StandardMaterial3D" id=6]
+[sub_resource type="SphereMesh" id=6]
+
+[sub_resource type="StandardMaterial3D" id=7]
 no_depth_test = true
 shading_mode = 0
 albedo_color = Color( 0.996094, 0, 0, 1 )
 
-[sub_resource type="StandardMaterial3D" id=7]
+[sub_resource type="StandardMaterial3D" id=8]
 no_depth_test = true
 shading_mode = 0
 albedo_color = Color( 0, 0.996078, 0.294118, 1 )
@@ -54,13 +60,11 @@ transform = Transform( 0.864696, -0.320176, 0.387026, 0, 0.770513, 0.637424, -0.
 script = null
 
 [node name="Godot_CCDIK_Arm" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55982, 0, 0 )
 
 [node name="Skeleton" parent="Godot_CCDIK_Arm/Robotic_Arm_Armature" index="0"]
-bone_axis_mode = 1
-skeleton_modifications_count = 2
 bones/3/bound_children = [ NodePath("BoneAttachment3D") ]
-Modifications/0 = SubResource( 3 )
-Modifications/1 = SubResource( 4 )
+Modification_Stack = SubResource( 5 )
 
 [node name="GDScript_Bone_Test_01" type="Node3D" parent="Godot_CCDIK_Arm/Robotic_Arm_Armature/Skeleton" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.67257, 5.01036, 0.0414646 )
@@ -73,12 +77,12 @@ mode = 3
 
 [node name="DEBUG" type="MeshInstance3D" parent="Godot_CCDIK_Arm/Robotic_Arm_Armature/Skeleton/GDScript_Bone_Test_01"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
-mesh = SubResource( 5 )
-material/0 = SubResource( 6 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
 script = null
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Godot_CCDIK_Arm/Robotic_Arm_Armature/Skeleton" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.01343, 0 )
+transform = Transform( -0.207864, 0.83662, -0.506813, -5.96047e-08, 0.51813, 0.855302, 0.978158, 0.177786, -0.1077, -1.18763, 3.72119, 0.0790486 )
 bone_name = "joint_2"
 script = null
 
@@ -88,18 +92,18 @@ script = null
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="LookAt_Target"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
-mesh = SubResource( 5 )
-material/0 = SubResource( 7 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 8 )
 script = null
 
 [node name="LookAt_Target2" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.69694, 5.96085, 0.209691 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62609, 6.42978, 1.00845 )
 script = null
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="LookAt_Target2"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
-mesh = SubResource( 5 )
-material/0 = SubResource( 7 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 8 )
 script = null
 
 [editable path="Godot_CCDIK_Arm"]
