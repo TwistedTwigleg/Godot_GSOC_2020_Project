@@ -23,8 +23,8 @@ target_nodepath = NodePath("../../../LookAt_Target2")
 [sub_resource type="SkeletonModificationStack3D" id=5]
 strength = 1.0
 modification_count = 2
-Modifications/0 = SubResource( 3 )
-Modifications/1 = SubResource( 4 )
+modifications/0 = SubResource( 3 )
+modifications/1 = SubResource( 4 )
 
 [sub_resource type="SphereMesh" id=6]
 
@@ -64,7 +64,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55982, 0, 0 )
 
 [node name="Skeleton" parent="Godot_CCDIK_Arm/Robotic_Arm_Armature" index="0"]
 bones/3/bound_children = [ NodePath("BoneAttachment3D") ]
-Modification_Stack = SubResource( 5 )
+modification_stack = SubResource( 5 )
 
 [node name="GDScript_Bone_Test_01" type="Node3D" parent="Godot_CCDIK_Arm/Robotic_Arm_Armature/Skeleton" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.67257, 5.01036, 0.0414646 )
@@ -82,12 +82,12 @@ material/0 = SubResource( 7 )
 script = null
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Godot_CCDIK_Arm/Robotic_Arm_Armature/Skeleton" index="2"]
-transform = Transform( -0.207864, 0.83662, -0.506813, -5.96047e-08, 0.51813, 0.855302, 0.978158, 0.177786, -0.1077, -1.18763, 3.72119, 0.0790486 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.01343, 0 )
 bone_name = "joint_2"
 script = null
 
 [node name="LookAt_Target" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44156, 5.05239, 0.125248 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44156, 4.34434, 0.125248 )
 script = null
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="LookAt_Target"]
