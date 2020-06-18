@@ -13,11 +13,13 @@ size = Vector2( 20, 20 )
 [sub_resource type="SkeletonModification3D_LookAt" id=3]
 enabled = true
 bone_name = "joint_1"
+bone_index = 2
 target_nodepath = NodePath("../../../LookAt_Target")
 
 [sub_resource type="SkeletonModification3D_LookAt" id=4]
 enabled = true
 bone_name = "joint_2"
+bone_index = 3
 target_nodepath = NodePath("../../../LookAt_Target2")
 
 [sub_resource type="SkeletonModificationStack3D" id=5]
@@ -97,7 +99,7 @@ material/0 = SubResource( 8 )
 script = null
 
 [node name="LookAt_Target2" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62609, 6.42978, 1.00845 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38178, 6.42978, 2.47398 )
 script = null
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="LookAt_Target2"]

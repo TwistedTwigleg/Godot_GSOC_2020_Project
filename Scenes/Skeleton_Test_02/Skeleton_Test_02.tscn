@@ -12,6 +12,7 @@ size = Vector2( 20, 20 )
 [sub_resource type="SkeletonModification3D_LookAt" id=3]
 enabled = true
 bone_name = "b_head_5"
+bone_index = 6
 target_nodepath = NodePath("../../../LookAtTarget")
 
 [sub_resource type="SkeletonModificationStack3D" id=4]
@@ -72,7 +73,7 @@ bones/22/pose = Transform( 0.35802, -0.810344, 0.463858, 0.895521, 0.438637, 0.0
 modification_stack = SubResource( 4 )
 
 [node name="LookAtTarget" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77271, 3.25977, 3.52216 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.32059, 2.61107, 3.95361 )
 script = null
 __meta__ = {
 "_edit_group_": true
