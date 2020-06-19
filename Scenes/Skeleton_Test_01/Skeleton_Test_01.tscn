@@ -15,12 +15,14 @@ enabled = true
 bone_name = "joint_1"
 bone_index = 2
 target_nodepath = NodePath("../../../LookAt_Target")
+rotation_offset = Vector3( 0, 90, 0 )
 
 [sub_resource type="SkeletonModification3D_LookAt" id=4]
 enabled = true
 bone_name = "joint_2"
 bone_index = 3
 target_nodepath = NodePath("../../../LookAt_Target2")
+lock_rotation_z = true
 
 [sub_resource type="SkeletonModificationStack3D" id=5]
 strength = 1.0

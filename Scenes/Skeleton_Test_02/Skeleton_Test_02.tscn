@@ -73,7 +73,7 @@ bones/22/pose = Transform( 0.35802, -0.810344, 0.463858, 0.895521, 0.438637, 0.0
 modification_stack = SubResource( 4 )
 
 [node name="LookAtTarget" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.32059, 2.61107, 3.95361 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34066, 3.50979, 4.05685 )
 script = null
 __meta__ = {
 "_edit_group_": true
