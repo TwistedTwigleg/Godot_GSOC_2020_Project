@@ -133,7 +133,7 @@ transform = Transform( 1, 1.90582e-21, 0, -1.38943e-15, 1, -3.55271e-15, -2.8421
 script = null
 
 [node name="CCDIK_Target" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.60612, 1.05672, 1.1276 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.69619, 1.41772, 2.03064 )
 script = null
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="CCDIK_Target"]
@@ -150,7 +150,7 @@ bones/4/bound_children = [ NodePath("BoneAttachment3D") ]
 modification_stack = SubResource( 8 )
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0 )
+transform = Transform( -0.084785, 0.56151, 0.823115, 0.862301, -0.372564, 0.342976, 0.499247, 0.738852, -0.452603, -13.224, 6.22479, 7.08845 )
 bone_name = "bone_5"
 script = null
 

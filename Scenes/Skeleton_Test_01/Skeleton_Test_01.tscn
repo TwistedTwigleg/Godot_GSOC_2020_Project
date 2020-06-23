@@ -15,7 +15,6 @@ enabled = true
 bone_name = "joint_1"
 bone_index = 2
 target_nodepath = NodePath("../../../LookAt_Target")
-rotation_offset = Vector3( 0, 90, 0 )
 
 [sub_resource type="SkeletonModification3D_LookAt" id=4]
 enabled = true
