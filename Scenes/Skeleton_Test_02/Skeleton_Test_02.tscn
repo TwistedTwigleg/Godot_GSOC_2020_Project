@@ -9,7 +9,7 @@ ambient_light_color = Color( 0.48, 0.48, 0.48, 1 )
 [sub_resource type="PlaneMesh" id=2]
 size = Vector2( 20, 20 )
 
-[sub_resource type="SkeletonModification3D_LookAt" id=3]
+[sub_resource type="SkeletonModification3DLookAt" id=3]
 enabled = true
 bone_name = "b_head_5"
 bone_index = 6

@@ -17,7 +17,7 @@ no_depth_test = true
 shading_mode = 0
 albedo_color = Color( 0, 0.996078, 0.294118, 1 )
 
-[sub_resource type="SkeletonModification3D_CCDIK" id=5]
+[sub_resource type="SkeletonModification3DCCDIK" id=5]
 target_nodepath = NodePath("../../../CCDIK_Target")
 tip_nodepath = NodePath("TipHolder/Tip")
 ccdik_data_chain_length = 6
@@ -60,7 +60,7 @@ modifications/0 = SubResource( 5 )
 [sub_resource type="StandardMaterial3D" id=9]
 albedo_color = Color( 0.333333, 0.843137, 0.278431, 1 )
 
-[sub_resource type="SkeletonModification3D_CCDIK" id=7]
+[sub_resource type="SkeletonModification3DCCDIK" id=7]
 target_nodepath = NodePath("../../../CCDIK_Target")
 tip_nodepath = NodePath("BoneAttachment3D/TIP")
 ccdik_data_chain_length = 5
@@ -107,7 +107,7 @@ strength = 1.0
 modification_count = 1
 modifications/0 = SubResource( 7 )
 
-[sub_resource type="SkeletonModification3D_CCDIK" id=10]
+[sub_resource type="SkeletonModification3DCCDIK" id=10]
 target_nodepath = NodePath("../../../CCDIK_Target")
 tip_nodepath = NodePath("BoneAttachment3D/TIP")
 ccdik_data_chain_length = 5

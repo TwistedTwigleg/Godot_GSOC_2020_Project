@@ -1,6 +1,6 @@
 [gd_resource type="SkeletonModificationStack3D" load_steps=2 format=2]
 
-[sub_resource type="SkeletonModification3D_FABRIK" id=1]
+[sub_resource type="SkeletonModification3DFABRIK" id=1]
 target_nodepath = NodePath("../../../FARIK_TARGET")
 fabrik_data_chain_length = 5
 chain_max_iterations = 1
