@@ -3,6 +3,7 @@
 [sub_resource type="SkeletonModification3D_FABRIK" id=1]
 target_nodepath = NodePath("../../../FARIK_TARGET")
 fabrik_data_chain_length = 5
+chain_max_iterations = 1
 joint_data/0/bone_name = "bone_1"
 joint_data/0/bone_index = 0
 joint_data/0/auto_calculate_length = true
@@ -28,6 +29,7 @@ joint_data/4/auto_calculate_length = true
 joint_data/4/use_tip_node = true
 joint_data/4/tip_node = NodePath("BoneAttachment3D/TIP")
 joint_data/4/magnet_position = Vector3( 0, 0, 0 )
+joint_data/4/use_target_basis = false
 
 [resource]
 strength = 1.0

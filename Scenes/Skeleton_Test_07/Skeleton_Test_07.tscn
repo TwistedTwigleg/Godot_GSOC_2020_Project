@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Simple_Test_Rig/Godot_Simple_Test_Rig.glb" type="PackedScene" id=1]
+
+[sub_resource type="Environment" id=1]
+ambient_light_source = 2
+ambient_light_color = Color( 0.48, 0.48, 0.48, 1 )
+
+[sub_resource type="PlaneMesh" id=2]
+size = Vector2( 20, 20 )
+
+[sub_resource type="SphereMesh" id=3]
+
+[sub_resource type="StandardMaterial3D" id=4]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color( 0, 0.996078, 0.294118, 1 )
+
+[sub_resource type="SkeletonModification3DTwoBoneIK" id=5]
+enabled = true
+target_nodepath = NodePath("../../../TwoBoneIK_Target")
+use_tip_node = true
+tip_node = NodePath("BoneAttachment3D/TIP")
+auto_calculate_joint_length = true
+joint_one_bone_idx = 0
+joint_two_bone_idx = 2
+
+[sub_resource type="SkeletonModificationStack3D" id=6]
+strength = 1.0
+modification_count = 1
+modifications/0 = SubResource( 5 )
+
+[node name="Skeleton_Test_07" type="Node3D"]
+script = null
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform( 0.637841, 0.642996, -0.423929, 0, 0.550437, 0.834877, 0.770168, -0.532518, 0.351091, 0, 7.59687, 0 )
+shadow_enabled = true
+script = null
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+script = null
+
+[node name="FloorMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
+script = null
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform( 0.864696, -0.320176, 0.387026, 0, 0.770513, 0.637424, -0.502296, -0.551178, 0.666259, 3.49703, 9.11224, 5.24953 )
+script = null
+
+[node name="TwoBoneIK_Target" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59778, 4.52243, -0.0101404 )
+script = null
+
+[node name="DEBUG_LookAt" type="MeshInstance3D" parent="TwoBoneIK_Target"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+script = null
+
+[node name="Godot_Simple_Test_Rig" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.285361, 0, 0 )
+
+[node name="Skeleton" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature" index="0"]
+bones/4/bound_children = [ NodePath("BoneAttachment3D") ]
+modification_stack = SubResource( 6 )
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0 )
+bone_name = "bone_5"
+script = null
+
+[node name="TIP" type="Position3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton/BoneAttachment3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
+script = null
+
+[editable path="Godot_Simple_Test_Rig"]

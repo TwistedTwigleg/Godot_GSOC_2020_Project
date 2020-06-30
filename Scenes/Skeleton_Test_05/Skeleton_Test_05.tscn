@@ -38,6 +38,7 @@ joint_data/2/bone_index = 34
 joint_data/2/auto_calculate_length = true
 joint_data/2/use_tip_node = false
 joint_data/2/magnet_position = Vector3( 0, 0, 0 )
+joint_data/2/use_target_basis = false
 
 [sub_resource type="SkeletonModification3D_FABRIK" id=7]
 target_nodepath = NodePath("../../../Right_Arm_Target")
@@ -54,8 +55,10 @@ joint_data/1/magnet_position = Vector3( 0, 0, 0 )
 joint_data/2/bone_name = "right_hand"
 joint_data/2/bone_index = 104
 joint_data/2/auto_calculate_length = true
-joint_data/2/use_tip_node = false
+joint_data/2/use_tip_node = true
+joint_data/2/tip_node = NodePath("RightHandEnd/Node3D")
 joint_data/2/magnet_position = Vector3( 0, 0, 0 )
+joint_data/2/use_target_basis = false
 
 [sub_resource type="SkeletonModification3D_FABRIK" id=8]
 target_nodepath = NodePath("../../../Left_Arm_Target")
@@ -72,21 +75,23 @@ joint_data/1/magnet_position = Vector3( 0, 0, 0 )
 joint_data/2/bone_name = "left_hand"
 joint_data/2/bone_index = 38
 joint_data/2/auto_calculate_length = true
-joint_data/2/use_tip_node = false
+joint_data/2/use_tip_node = true
+joint_data/2/tip_node = NodePath("LeftHandEnd2/Node3D")
 joint_data/2/magnet_position = Vector3( 0, 0, 0 )
+joint_data/2/use_target_basis = true
 
 [sub_resource type="SkeletonModification3D_LookAt" id=9]
-enabled = true
 bone_name = "head"
 bone_index = 62
 target_nodepath = NodePath("../../../Head_Target")
 rotation_offset = Vector3( 90, 0, 0 )
 
 [sub_resource type="SkeletonModification3D_Jiggle" id=10]
-enabled = true
 target_nodepath = NodePath("SimpleBoneAttachment/Hair_L")
 jiggle_data_chain_length = 5
 stiffness = 6.0
+damping = 0.5
+use_gravity = true
 joint_data/0/bone_name = "hair_2_l"
 joint_data/0/bone_index = 68
 joint_data/0/override_defaults = false
@@ -104,10 +109,11 @@ joint_data/4/bone_index = 72
 joint_data/4/override_defaults = false
 
 [sub_resource type="SkeletonModification3D_Jiggle" id=11]
-enabled = true
 target_nodepath = NodePath("SimpleBoneAttachment/Hair_R")
 jiggle_data_chain_length = 5
 stiffness = 6.0
+damping = 0.5
+use_gravity = true
 joint_data/0/bone_name = "hair_2_r"
 joint_data/0/bone_index = 76
 joint_data/0/override_defaults = false
@@ -187,7 +193,7 @@ material/0 = SubResource( 4 )
 script = null
 
 [node name="Left_Arm_Target" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4.5, 0 )
+transform = Transform( -0.0338964, 0.999302, -0.0157048, -0.124394, -0.0198101, -0.992035, -0.991654, -0.0316728, 0.124978, 1.05162, 5.20848, 1.13619 )
 script = null
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="Left_Arm_Target"]
@@ -197,7 +203,7 @@ material/0 = SubResource( 5 )
 script = null
 
 [node name="Right_Arm_Target" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39327, 5.21382, 1.31425 )
 script = null
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="Right_Arm_Target"]
@@ -207,7 +213,7 @@ material/0 = SubResource( 5 )
 script = null
 
 [node name="Spine_Target" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0.166389 )
 script = null
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="Spine_Target"]
@@ -233,6 +239,24 @@ script = null
 
 [node name="Hair_R" type="Position3D" parent="AliciaSolid_vrm-051/Root/Skeleton/SimpleBoneAttachment"]
 transform = Transform( 1, -2.32831e-10, 9.31323e-10, 0, 1, 0, -4.65661e-10, -2.98023e-08, 1, 0.443498, -0.646069, 0.299525 )
+script = null
+
+[node name="RightHandEnd" type="Node3D" parent="AliciaSolid_vrm-051/Root/Skeleton" index="13"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.497403, 1.26257, 0.00711707 )
+script = SubResource( 13 )
+bone_name = "right_hand"
+
+[node name="Node3D" type="Node3D" parent="AliciaSolid_vrm-051/Root/Skeleton/RightHandEnd"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0 )
+script = null
+
+[node name="LeftHandEnd2" type="Node3D" parent="AliciaSolid_vrm-051/Root/Skeleton" index="14"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49742, 1.26387, 0.00751136 )
+script = SubResource( 13 )
+bone_name = "left_hand"
+
+[node name="Node3D" type="Node3D" parent="AliciaSolid_vrm-051/Root/Skeleton/LeftHandEnd2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0 )
 script = null
 
 [editable path="AliciaSolid_vrm-051"]
