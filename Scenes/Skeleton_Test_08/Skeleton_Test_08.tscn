@@ -1,0 +1,283 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Assets/AliciaSolid/AliciaSolid_vrm-0.51.glb" type="PackedScene" id=1]
+
+[sub_resource type="Environment" id=1]
+ambient_light_source = 2
+ambient_light_color = Color( 0.48, 0.48, 0.48, 1 )
+
+[sub_resource type="PlaneMesh" id=2]
+size = Vector2( 20, 20 )
+
+[sub_resource type="SphereMesh" id=3]
+
+[sub_resource type="StandardMaterial3D" id=4]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color( 0, 0.996078, 0.294118, 1 )
+
+[sub_resource type="StandardMaterial3D" id=5]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color( 0.996078, 0.839216, 0, 1 )
+
+[sub_resource type="StandardMaterial3D" id=6]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color( 0, 0.247059, 0.996078, 1 )
+
+[sub_resource type="SkeletonModification3DFABRIK" id=7]
+target_nodepath = NodePath("../../../Spine_Target")
+fabrik_data_chain_length = 3
+joint_data/0/bone_name = "spine_1"
+joint_data/0/bone_index = 32
+joint_data/0/auto_calculate_length = true
+joint_data/0/use_tip_node = false
+joint_data/1/bone_name = "spine_2"
+joint_data/1/bone_index = 33
+joint_data/1/auto_calculate_length = true
+joint_data/1/use_tip_node = false
+joint_data/1/magnet_position = Vector3( 0, 0, 0 )
+joint_data/2/bone_name = "spine_3"
+joint_data/2/bone_index = 34
+joint_data/2/auto_calculate_length = true
+joint_data/2/use_tip_node = false
+joint_data/2/magnet_position = Vector3( 0, 0, 0 )
+joint_data/2/use_target_basis = false
+
+[sub_resource type="SkeletonModification3DTwoBoneIK" id=8]
+enabled = true
+target_nodepath = NodePath("../../../Right_Arm_Target")
+use_tip_node = true
+tip_node = NodePath("RightHandEnd/Node3D")
+auto_calculate_joint_length = true
+use_pole_node = true
+pole_node = NodePath("../../../Right_Arm_Pole")
+joint_one_bone_name = "right_arm"
+joint_one_bone_idx = 102
+joint_two_bone_name = "right_fore_arm"
+joint_two_bone_idx = 103
+
+[sub_resource type="SkeletonModification3DTwoBoneIK" id=9]
+enabled = true
+target_nodepath = NodePath("../../../Left_Arm_Target")
+use_tip_node = true
+tip_node = NodePath("LeftHandEnd2/Node3D")
+auto_calculate_joint_length = true
+use_pole_node = true
+pole_node = NodePath("../../../Left_Arm_Pole")
+joint_one_bone_name = "left_arm"
+joint_one_bone_idx = 36
+joint_two_bone_name = "left_fore_arm"
+joint_two_bone_idx = 37
+
+[sub_resource type="SkeletonModification3DLookAt" id=10]
+bone_name = "head"
+bone_index = 62
+target_nodepath = NodePath("../../../Head_Target")
+rotation_offset = Vector3( 90, 0, 0 )
+
+[sub_resource type="SkeletonModification3DJiggle" id=11]
+target_nodepath = NodePath("SimpleBoneAttachment/Hair_L")
+jiggle_data_chain_length = 5
+stiffness = 6.0
+damping = 0.5
+use_gravity = true
+joint_data/0/bone_name = "hair_2_l"
+joint_data/0/bone_index = 68
+joint_data/0/override_defaults = false
+joint_data/1/bone_name = "hair_3_l"
+joint_data/1/bone_index = 69
+joint_data/1/override_defaults = false
+joint_data/2/bone_name = "hair_4_l"
+joint_data/2/bone_index = 70
+joint_data/2/override_defaults = false
+joint_data/3/bone_name = "hair_5_l"
+joint_data/3/bone_index = 71
+joint_data/3/override_defaults = false
+joint_data/4/bone_name = "hair_6_l"
+joint_data/4/bone_index = 72
+joint_data/4/override_defaults = false
+
+[sub_resource type="SkeletonModification3DJiggle" id=12]
+target_nodepath = NodePath("SimpleBoneAttachment/Hair_R")
+jiggle_data_chain_length = 5
+stiffness = 6.0
+damping = 0.5
+use_gravity = true
+joint_data/0/bone_name = "hair_2_r"
+joint_data/0/bone_index = 76
+joint_data/0/override_defaults = false
+joint_data/1/bone_name = "hair_3_r"
+joint_data/1/bone_index = 77
+joint_data/1/override_defaults = false
+joint_data/2/bone_name = "hair_4_r"
+joint_data/2/bone_index = 78
+joint_data/2/override_defaults = false
+joint_data/3/bone_name = "hair_5_r"
+joint_data/3/bone_index = 79
+joint_data/3/override_defaults = false
+joint_data/4/bone_name = "hair_6_r"
+joint_data/4/bone_index = 80
+joint_data/4/override_defaults = false
+
+[sub_resource type="SkeletonModificationStack3D" id=13]
+strength = 1.0
+modification_count = 6
+modifications/0 = SubResource( 7 )
+modifications/1 = SubResource( 8 )
+modifications/2 = SubResource( 9 )
+modifications/3 = SubResource( 10 )
+modifications/4 = SubResource( 11 )
+modifications/5 = SubResource( 12 )
+
+[sub_resource type="GDScript" id=14]
+script/source = "tool
+extends Node3D
+
+var skeleton:Skeleton3D;
+export (String) var bone_name = \"\";
+var bone_idx = -1;
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	skeleton = get_parent();
+	if (skeleton is Skeleton3D):
+		bone_idx = skeleton.find_bone(bone_name);
+
+func _process(delta):
+	if (bone_idx > -1):
+		global_transform = skeleton.global_pose_to_world_transform(
+			skeleton.get_bone_global_pose(bone_idx)
+		);
+"
+
+[node name="Skeleton_Test_08" type="Node3D"]
+script = null
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform( 0.637841, 0.642996, -0.423929, 0, 0.550437, 0.834877, 0.770168, -0.532518, 0.351091, 0, 7.59687, 0 )
+shadow_enabled = true
+script = null
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+script = null
+
+[node name="FloorMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
+script = null
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform( 0.864696, -0.320176, 0.387026, 0, 0.770513, 0.637424, -0.502296, -0.551178, 0.666259, 3.49703, 9.11224, 5.24953 )
+script = null
+
+[node name="Head_Target" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018758, 6.0863, 2.03227 )
+script = null
+
+[node name="DEBUG" type="MeshInstance3D" parent="Head_Target"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+script = null
+
+[node name="Left_Arm_Target" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49564, 4.28438, 1.13619 )
+script = null
+
+[node name="DEBUG" type="MeshInstance3D" parent="Left_Arm_Target"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 5 )
+script = null
+
+[node name="Left_Arm_Pole" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.763615, 4.4724, -0.994978 )
+script = null
+
+[node name="DEBUG" type="MeshInstance3D" parent="Left_Arm_Pole"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 6 )
+script = null
+
+[node name="Right_Arm_Target" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.688007, 4.53554, 1.32315 )
+script = null
+
+[node name="DEBUG" type="MeshInstance3D" parent="Right_Arm_Target"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 5 )
+script = null
+
+[node name="Right_Arm_Pole" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.691143, 4.46538, -1.09659 )
+script = null
+
+[node name="DEBUG" type="MeshInstance3D" parent="Right_Arm_Pole"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 6 )
+script = null
+
+[node name="Spine_Target" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0.166389 )
+script = null
+
+[node name="DEBUG_LookAt" type="MeshInstance3D" parent="Spine_Target"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 5 )
+script = null
+
+[node name="AliciaSolid_vrm-051" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4, 0, -1.30337e-06, 0, 4, 0, 1.30337e-06, 0, -4, 0, 0, 0 )
+
+[node name="Skeleton" parent="AliciaSolid_vrm-051/Root" index="0"]
+modification_stack = SubResource( 13 )
+
+[node name="SimpleBoneAttachment" type="Node3D" parent="AliciaSolid_vrm-051/Root/Skeleton" index="12"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.63736e-08, 1.34677, 0.00104968 )
+script = SubResource( 14 )
+bone_name = "head"
+
+[node name="Hair_L" type="Position3D" parent="AliciaSolid_vrm-051/Root/Skeleton/SimpleBoneAttachment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.440359, -0.646069, 0.299525 )
+script = null
+
+[node name="Hair_R" type="Position3D" parent="AliciaSolid_vrm-051/Root/Skeleton/SimpleBoneAttachment"]
+transform = Transform( 1, -2.32831e-10, 9.31323e-10, 0, 1, 0, -4.65661e-10, -2.98023e-08, 1, 0.443498, -0.646069, 0.299525 )
+script = null
+
+[node name="RightHandEnd" type="Node3D" parent="AliciaSolid_vrm-051/Root/Skeleton" index="13"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.497403, 1.26257, 0.00711707 )
+script = SubResource( 14 )
+bone_name = "right_hand"
+
+[node name="Node3D" type="Node3D" parent="AliciaSolid_vrm-051/Root/Skeleton/RightHandEnd"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0, 0 )
+script = null
+
+[node name="RightHandEnd2" type="Node3D" parent="AliciaSolid_vrm-051/Root/Skeleton" index="14"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0707554, 1.27024, 0.00937783 )
+script = SubResource( 14 )
+bone_name = "right_arm"
+
+[node name="RightHandEnd3" type="Node3D" parent="AliciaSolid_vrm-051/Root/Skeleton" index="15"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0707554, 1.27024, 0.00937783 )
+script = SubResource( 14 )
+bone_name = "right_fore_arm"
+
+[node name="LeftHandEnd2" type="Node3D" parent="AliciaSolid_vrm-051/Root/Skeleton" index="16"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49742, 1.26387, 0.00751136 )
+script = SubResource( 14 )
+bone_name = "left_hand"
+
+[node name="Node3D" type="Node3D" parent="AliciaSolid_vrm-051/Root/Skeleton/LeftHandEnd2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, 0 )
+script = null
+
+[editable path="AliciaSolid_vrm-051"]

@@ -17,7 +17,6 @@ shading_mode = 0
 albedo_color = Color( 0, 0.996078, 0.294118, 1 )
 
 [sub_resource type="SkeletonModification3DJiggle" id=5]
-enabled = true
 target_nodepath = NodePath("../../../Jiggle_Target")
 jiggle_data_chain_length = 5
 joint_data/0/bone_name = "bone_1"
