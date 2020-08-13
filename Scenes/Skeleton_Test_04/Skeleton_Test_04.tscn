@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Simple_Test_Rig/Godot_Simple_Test_Rig.glb" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Skeleton_Test_04/Test_04_Modification3DStack.tres" type="SkeletonModificationStack3D" id=2]
@@ -16,6 +16,8 @@ size = Vector2( 20, 20 )
 no_depth_test = true
 shading_mode = 0
 albedo_color = Color( 0, 0.996078, 0.294118, 1 )
+
+[sub_resource type="SphereMesh" id=5]
 
 [node name="Skeleton_Test_04" type="Node3D"]
 script = null
@@ -39,7 +41,7 @@ transform = Transform( 0.864696, -0.320176, 0.387026, 0, 0.770513, 0.637424, -0.
 script = null
 
 [node name="FARIK_TARGET" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61464, 7.41008, 0.265977 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63519, 5.0891, -2.70776 )
 script = null
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="FARIK_TARGET"]
@@ -52,16 +54,30 @@ script = null
 transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.285361, 0, 0 )
 
 [node name="Skeleton" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature" index="0"]
-bones/4/bound_children = [ NodePath("BoneAttachment3D") ]
 modification_stack = ExtResource( 2 )
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0 )
 bone_name = "bone_5"
+bone_idx = 4
 script = null
 
 [node name="TIP" type="Position3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton/BoneAttachment3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
+script = null
+
+[node name="External_BoneAttachment3D" type="BoneAttachment3D" parent="."]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.285361, 3, 0 )
+bone_name = "bone_3"
+bone_idx = 2
+use_external_skeleton = true
+external_skeleton = NodePath("../Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton")
+script = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="External_BoneAttachment3D"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+mesh = SubResource( 5 )
+material/0 = null
 script = null
 
 [editable path="Godot_Simple_Test_Rig"]

@@ -19,9 +19,8 @@ albedo_color = Color( 0, 0.996078, 0.294118, 1 )
 [sub_resource type="SkeletonModification3DTwoBoneIK" id=5]
 enabled = true
 target_nodepath = NodePath("../../../TwoBoneIK_Target")
-use_tip_node = true
-tip_node = NodePath("BoneAttachment3D/TIP")
-auto_calculate_joint_length = true
+joint_one_length = 12.0
+joint_two_length = 18.0
 use_pole_node = true
 pole_node = NodePath("POLE")
 joint_one_bone_name = "bone_1"
@@ -30,7 +29,6 @@ joint_two_bone_name = "bone_3"
 joint_two_bone_idx = 2
 
 [sub_resource type="SkeletonModificationStack3D" id=6]
-strength = 1.0
 modification_count = 1
 modifications/0 = SubResource( 5 )
 
@@ -61,7 +59,7 @@ transform = Transform( 0.864696, -0.320176, 0.387026, 0, 0.770513, 0.637424, -0.
 script = null
 
 [node name="TwoBoneIK_Target" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.386, 5.72074, -0.0101404 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51219, 5.34062, -2.18127 )
 script = null
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="TwoBoneIK_Target"]
