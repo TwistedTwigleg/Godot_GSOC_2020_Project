@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "SkeletonModification3D",
+"class": @"GDScript_RotationAdjustment",
+"language": @"GDScript",
+"path": "res://Scenes/Skeleton_Test_09/BoneAdjustmentMod.gd"
+} ]
 _global_script_class_icons={
-
+@"GDScript_RotationAdjustment": ""
 }
 
 [application]

@@ -1,0 +1,232 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/FPS_Gloves_and_Gun/FPS_Gloves/scene.gltf" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Skeleton_Test_09/BoneAdjustmentMod.gd" type="Script" id=2]
+[ext_resource path="res://Assets/FPS_Gloves_and_Gun/FPS_Gun/scene.gltf" type="PackedScene" id=3]
+
+[sub_resource type="Environment" id=1]
+ambient_light_source = 2
+ambient_light_color = Color( 0.48, 0.48, 0.48, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 40, 1, 40 )
+
+[sub_resource type="ConcavePolygonShape3D" id=3]
+data = PackedVector3Array( -20, 0.5, 20, 20, 0.5, 20, -20, -0.5, 20, 20, 0.5, 20, 20, -0.5, 20, -20, -0.5, 20, 20, 0.5, -20, -20, 0.5, -20, 20, -0.5, -20, -20, 0.5, -20, -20, -0.5, -20, 20, -0.5, -20, 20, 0.5, 20, 20, 0.5, -20, 20, -0.5, 20, 20, 0.5, -20, 20, -0.5, -20, 20, -0.5, 20, -20, 0.5, -20, -20, 0.5, 20, -20, -0.5, -20, -20, 0.5, 20, -20, -0.5, 20, -20, -0.5, -20, 20, 0.5, 20, -20, 0.5, 20, 20, 0.5, -20, -20, 0.5, 20, -20, 0.5, -20, 20, 0.5, -20, -20, -0.5, 20, 20, -0.5, 20, -20, -0.5, -20, 20, -0.5, 20, 20, -0.5, -20, -20, -0.5, -20 )
+
+[sub_resource type="CapsuleShape3D" id=4]
+radius = 1.5
+height = 4.0
+
+[sub_resource type="SkeletonModification3DTwoBoneIK" id=5]
+enabled = true
+target_nodepath = NodePath("../../../../../../../../../Gun/Arm_Left_Target")
+use_tip_node = true
+tip_node = NodePath("../../../../../../../../../Hand_Left/END")
+auto_calculate_joint_length = true
+use_pole_node = true
+pole_node = NodePath("../../../../../../../../../Arm_Left_Pole")
+joint_one_bone_name = "joint_0"
+joint_one_bone_idx = 1
+joint_two_bone_name = "joint_2_1"
+joint_two_bone_idx = 2
+
+[sub_resource type="SkeletonModification3D" id=6]
+enabled = true
+script = ExtResource( 2 )
+rotation_adjustment = Vector3( 90, 0, 0 )
+bone_idx = 2
+
+[sub_resource type="SkeletonModification3DTwoBoneIK" id=7]
+enabled = true
+target_nodepath = NodePath("../../../../../../../../../Gun/Arm_Right_Target")
+use_tip_node = true
+tip_node = NodePath("../../../../../../../../../Hand_Right/END")
+auto_calculate_joint_length = true
+use_pole_node = true
+pole_node = NodePath("../../../../../../../../../Arm_Right_Pole")
+joint_one_bone_name = "joint_24_23"
+joint_one_bone_idx = 24
+joint_two_bone_name = "joint_25_25"
+joint_two_bone_idx = 25
+
+[sub_resource type="SkeletonModification3D" id=8]
+enabled = true
+script = ExtResource( 2 )
+rotation_adjustment = Vector3( -90, 0, 0 )
+bone_idx = 25
+
+[sub_resource type="SkeletonModificationStack3D" id=9]
+enabled = true
+modification_count = 4
+modifications/0 = SubResource( 5 )
+modifications/1 = SubResource( 6 )
+modifications/2 = SubResource( 7 )
+modifications/3 = SubResource( 8 )
+
+[node name="Skeleton_Test_08" type="Node3D"]
+script = null
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform( 0.637841, 0.642996, -0.423929, 0, 0.550437, 0.834877, 0.770168, -0.532518, 0.351091, 0, 7.59687, 0 )
+shadow_enabled = true
+script = null
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+script = null
+
+[node name="FloorMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
+script = null
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FloorMesh"]
+script = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloorMesh/StaticBody3D"]
+shape = SubResource( 3 )
+script = null
+
+[node name="SimplePlayer" type="KinematicBody3D" parent="."]
+script = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SimplePlayer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.01558, 0 )
+shape = SubResource( 4 )
+script = null
+
+[node name="Arms" parent="SimplePlayer" instance=ExtResource( 1 )]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 4.87242, 0 )
+
+[node name="Skeleton" parent="SimplePlayer/Arms/RootNode gltf orientation matrix/RootNode model correction matrix/ba5392146a244cf78a36609b9238129dfbx/RootNode/Hands/group_joints/Node" index="0"]
+modification_stack = SubResource( 9 )
+
+[node name="Gun" parent="SimplePlayer" instance=ExtResource( 3 )]
+transform = Transform( 0.0499212, 0, -0.00280676, 0, 0.05, 0, 0.00280676, 0, 0.0499212, 0.412294, 5.56134, 1.4792 )
+
+[node name="Arm_Left_Target" type="Position3D" parent="SimplePlayer/Gun"]
+transform = Transform( 19.6962, 0, 3.47296, 0, 20, 0, -3.47296, 0, 19.6962, 4.95225, -7.32999, -17.7654 )
+script = null
+
+[node name="Arm_Right_Target" type="Position3D" parent="SimplePlayer/Gun"]
+transform = Transform( 19.6962, 0, 3.47296, 0, 20, 0, -3.47296, 0, 19.6962, -3.95091, -3.58051, 16.6902 )
+script = null
+
+[node name="Camera3D" type="Camera3D" parent="SimplePlayer"]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -4.75972e-07, 6.48926, -0.354133 )
+script = null
+
+[node name="Hand_Left" type="BoneAttachment3D" parent="SimplePlayer"]
+transform = Transform( -0.0399642, 0.00445618, -0.0297154, -0.00222427, 0.0488727, 0.0103205, 0.0299652, 0.0095709, -0.038865, 1.08711, 5.22466, 0.349576 )
+bone_name = "joint_3_3"
+bone_idx = 3
+use_external_skeleton = true
+external_skeleton = NodePath("../Arms/RootNode gltf orientation matrix/RootNode model correction matrix/ba5392146a244cf78a36609b9238129dfbx/RootNode/Hands/group_joints/Node/Skeleton")
+script = null
+
+[node name="END" type="Node3D" parent="SimplePlayer/Hand_Left"]
+transform = Transform( 1, 3.72529e-09, 1.78195e-15, 0, 1, 7.58081e-17, -3.88578e-16, 3.55271e-15, 1, 9.61621, 0, 0 )
+script = null
+
+[node name="Hand_Right" type="BoneAttachment3D" parent="SimplePlayer"]
+transform = Transform( -0.0337332, 0.00413404, -0.036674, 0.00132628, -0.0495174, -0.00680175, -0.0368824, -0.00556169, 0.033298, -0.172087, 5.41262, 1.96359 )
+bone_name = "joint_26_24"
+bone_idx = 26
+use_external_skeleton = true
+external_skeleton = NodePath("../Arms/RootNode gltf orientation matrix/RootNode model correction matrix/ba5392146a244cf78a36609b9238129dfbx/RootNode/Hands/group_joints/Node/Skeleton")
+script = null
+
+[node name="END" type="Node3D" parent="SimplePlayer/Hand_Right"]
+transform = Transform( 1, 3.72529e-09, 1.78195e-15, 0, 1, 7.58081e-17, -3.88578e-16, 3.55271e-15, 1, -9.616, 0, 0 )
+script = null
+
+[node name="Pointer_Upper" type="BoneAttachment3D" parent="SimplePlayer/Hand_Right"]
+transform = Transform( 0.866398, -0.0132243, -0.499178, -0.00241605, 0.999527, -0.030673, 0.499348, 0.027781, 0.865956, -11.9381, -3.59747, -6.67572e-06 )
+bone_name = "joint_28_27"
+bone_idx = 28
+override_pose = true
+override_mode = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../../Arms/RootNode gltf orientation matrix/RootNode model correction matrix/ba5392146a244cf78a36609b9238129dfbx/RootNode/Hands/group_joints/Node/Skeleton")
+script = null
+
+[node name="Pointer_Lower" type="BoneAttachment3D" parent="SimplePlayer/Hand_Right/Pointer_Upper"]
+transform = Transform( 0.306829, 0.232332, -0.922972, -0.136085, 0.970494, 0.199055, 0.941985, 0.0645269, 0.329393, -4.02983, 0.252449, -1.29469 )
+bone_name = "joint_29_28"
+bone_idx = 29
+override_pose = true
+override_mode = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Arms/RootNode gltf orientation matrix/RootNode model correction matrix/ba5392146a244cf78a36609b9238129dfbx/RootNode/Hands/group_joints/Node/Skeleton")
+script = null
+
+[node name="Middle_Upper" type="BoneAttachment3D" parent="SimplePlayer/Hand_Right"]
+transform = Transform( 0.616697, 0.0669644, -0.784347, -0.0894832, 0.99588, 0.0146676, 0.782098, 0.0611405, 0.620149, -12.3605, -1.00819, 9.53674e-07 )
+bone_name = "joint_32_31"
+bone_idx = 32
+override_pose = true
+override_mode = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../../Arms/RootNode gltf orientation matrix/RootNode model correction matrix/ba5392146a244cf78a36609b9238129dfbx/RootNode/Hands/group_joints/Node/Skeleton")
+script = null
+
+[node name="Middle_Lower" type="BoneAttachment3D" parent="SimplePlayer/Hand_Right/Middle_Upper"]
+transform = Transform( 0.644073, -0.0141393, -0.764834, 0.00910763, 0.9999, -0.0108153, 0.76491, 2.23517e-08, 0.644137, -3.93145, 0, -0.0836945 )
+bone_name = "joint_33_32"
+bone_idx = 33
+override_pose = true
+override_mode = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Arms/RootNode gltf orientation matrix/RootNode model correction matrix/ba5392146a244cf78a36609b9238129dfbx/RootNode/Hands/group_joints/Node/Skeleton")
+script = null
+
+[node name="Ring_Upper" type="BoneAttachment3D" parent="SimplePlayer/Hand_Right"]
+transform = Transform( 0.714432, -0.073823, 0.6958, 0.026464, -0.990856, -0.132301, 0.699204, 0.112933, -0.705946, -12.0818, 1.51608, -9.53674e-07 )
+bone_name = "joint_36_35"
+bone_idx = 36
+override_pose = true
+override_mode = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../../Arms/RootNode gltf orientation matrix/RootNode model correction matrix/ba5392146a244cf78a36609b9238129dfbx/RootNode/Hands/group_joints/Node/Skeleton")
+script = null
+
+[node name="Ring_Lower" type="BoneAttachment3D" parent="SimplePlayer/Hand_Right/Ring_Upper"]
+transform = Transform( 0.368152, -0.0355718, 0.929085, 0.203985, 0.978012, -0.0433845, -0.907113, 0.205492, 0.367313, -3.80467, -1.52588e-05, -7.62939e-06 )
+bone_name = "joint_37_36"
+bone_idx = 37
+override_pose = true
+override_mode = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Arms/RootNode gltf orientation matrix/RootNode model correction matrix/ba5392146a244cf78a36609b9238129dfbx/RootNode/Hands/group_joints/Node/Skeleton")
+script = null
+
+[node name="Pinky_Upper" type="BoneAttachment3D" parent="SimplePlayer/Hand_Right"]
+transform = Transform( 0.751564, -0.09996, 0.652043, 0.0314507, -0.981898, -0.186779, 0.65891, 0.160883, -0.734816, -11.5908, 4.02955, 9.53674e-07 )
+bone_name = "joint_40_39"
+bone_idx = 40
+override_pose = true
+override_mode = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../../Arms/RootNode gltf orientation matrix/RootNode model correction matrix/ba5392146a244cf78a36609b9238129dfbx/RootNode/Hands/group_joints/Node/Skeleton")
+script = null
+
+[node name="Pinky_Lower" type="BoneAttachment3D" parent="SimplePlayer/Hand_Right/Pinky_Upper"]
+transform = Transform( 0.670151, -0.10551, 0.734687, 0.144393, 0.989466, 0.0103896, -0.728044, 0.0991213, 0.678326, -3.29476, -1.52588e-05, 0 )
+bone_name = "joint_41_40"
+bone_idx = 41
+override_pose = true
+override_mode = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Arms/RootNode gltf orientation matrix/RootNode model correction matrix/ba5392146a244cf78a36609b9238129dfbx/RootNode/Hands/group_joints/Node/Skeleton")
+script = null
+
+[node name="Arm_Left_Pole" type="Position3D" parent="SimplePlayer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.46966, 5.39079, -0.609686 )
+script = null
+
+[node name="Arm_Right_Pole" type="Position3D" parent="SimplePlayer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.07649, 5.39079, -0.609686 )
+script = null
+
+[editable path="SimplePlayer/Arms"]

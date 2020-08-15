@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/AliciaSolid/AliciaSolid_vrm-0.51.glb" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Skeleton_Test_05/SimpleBoneAttachment.gd" type="Script" id=2]
@@ -131,14 +131,33 @@ joint_data/4/bone_name = "hair_6_r"
 joint_data/4/bone_index = 80
 joint_data/4/override_defaults = false
 
+[sub_resource type="SkeletonModification3DLookAt" id=13]
+bone_name = "eye_r"
+bone_index = 66
+target_nodepath = NodePath("../../../Head_Target/Eye_Right")
+additional_rotation = Vector3( 90, 0, 0 )
+
+[sub_resource type="SkeletonModification3DLookAt" id=14]
+bone_name = "eye_l"
+bone_index = 63
+target_nodepath = NodePath("../../../Head_Target/Eye_Left")
+additional_rotation = Vector3( 90, 0, 0 )
+
 [sub_resource type="SkeletonModificationStack3D" id=12]
-modification_count = 6
+modification_count = 8
 modifications/0 = SubResource( 6 )
 modifications/1 = SubResource( 7 )
 modifications/2 = SubResource( 8 )
 modifications/3 = SubResource( 9 )
 modifications/4 = SubResource( 10 )
 modifications/5 = SubResource( 11 )
+modifications/6 = SubResource( 13 )
+modifications/7 = SubResource( 14 )
+
+[sub_resource type="SphereMesh" id=15]
+
+[sub_resource type="StandardMaterial3D" id=16]
+albedo_color = Color( 1, 0, 0, 1 )
 
 [node name="Skeleton_Test_04" type="Node3D"]
 script = null
@@ -163,6 +182,7 @@ script = null
 
 [node name="Head_Target" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.950145, 5.54053, 2.13226 )
+visible = false
 script = null
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="Head_Target"]
@@ -171,8 +191,17 @@ mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 script = null
 
+[node name="Eye_Right" type="Position3D" parent="Head_Target"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.416488, 0.0959697, 0.226356 )
+script = null
+
+[node name="Eye_Left" type="Position3D" parent="Head_Target"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.117931, 0.0959697, 0.226356 )
+script = null
+
 [node name="Left_Arm_Target" type="Position3D" parent="."]
 transform = Transform( 0.627888, 0.745769, 0.222678, 0.120736, 0.189312, -0.974465, -0.768882, 0.63874, 0.0288261, 0.414623, 3.9666, 0.384857 )
+visible = false
 script = null
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="Left_Arm_Target"]
@@ -183,6 +212,7 @@ script = null
 
 [node name="Right_Arm_Target" type="Position3D" parent="."]
 transform = Transform( 0.446838, -0.862441, -0.237763, -0.0888427, 0.221679, -0.971064, 0.890193, 0.455032, 0.0224331, -0.461789, 3.97247, 0.331985 )
+visible = false
 script = null
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="Right_Arm_Target"]
@@ -193,6 +223,7 @@ script = null
 
 [node name="Spine_Target" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0.166389 )
+visible = false
 script = null
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="Spine_Target"]
@@ -236,6 +267,12 @@ bone_name = @"left_hand"
 
 [node name="Node3D" type="Node3D" parent="AliciaSolid_vrm-051/Root/Skeleton/LeftHandEnd2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0 )
+script = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 4.73295, 1.18248 )
+mesh = SubResource( 15 )
+material/0 = SubResource( 16 )
 script = null
 
 [editable path="AliciaSolid_vrm-051"]
