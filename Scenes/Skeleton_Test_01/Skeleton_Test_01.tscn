@@ -19,9 +19,9 @@ target_nodepath = NodePath("../../../LookAt_Target")
 bone_name = "joint_2"
 bone_index = 3
 target_nodepath = NodePath("../../../LookAt_Target2")
-lock_rotation_plane = 0
 
 [sub_resource type="SkeletonModificationStack3D" id=5]
+enabled = true
 modification_count = 2
 modifications/0 = SubResource( 3 )
 modifications/1 = SubResource( 4 )
@@ -63,11 +63,11 @@ script = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55982, 0, 0 )
 
 [node name="Skeleton" parent="Godot_CCDIK_Arm/Robotic_Arm_Armature" index="0"]
-bones/3/bound_children = [ NodePath("BoneAttachment3D") ]
 modification_stack = SubResource( 5 )
 
 [node name="GDScript_Bone_Test_01" type="Node3D" parent="Godot_CCDIK_Arm/Robotic_Arm_Armature/Skeleton" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.67257, 5.01036, 0.0414646 )
+visible = false
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -82,8 +82,10 @@ material/0 = SubResource( 7 )
 script = null
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Godot_CCDIK_Arm/Robotic_Arm_Armature/Skeleton" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.01343, 0 )
+transform = Transform( -0.581203, 0.791872, -0.187462, -0.0573009, 0.189969, 0.980116, 0.811739, 0.580388, -0.0650355, -1.51216, 3.29041, -0.952326 )
+visible = false
 bone_name = "joint_2"
+bone_idx = 3
 script = null
 
 [node name="LookAt_Target" type="Position3D" parent="."]

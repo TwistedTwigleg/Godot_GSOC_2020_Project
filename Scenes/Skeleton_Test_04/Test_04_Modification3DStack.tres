@@ -32,5 +32,6 @@ joint_data/4/magnet_position = Vector3( 0, 0, 0 )
 joint_data/4/use_target_basis = false
 
 [resource]
+enabled = true
 modification_count = 1
 modifications/0 = SubResource( 1 )

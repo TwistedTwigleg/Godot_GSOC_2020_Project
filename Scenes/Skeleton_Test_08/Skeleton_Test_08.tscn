@@ -54,10 +54,10 @@ tip_node = NodePath("RightHandEnd/Node3D")
 auto_calculate_joint_length = true
 use_pole_node = true
 pole_node = NodePath("../../../Right_Arm_Pole")
-joint_one_bone_name = "right_arm"
-joint_one_bone_idx = 102
-joint_two_bone_name = "right_fore_arm"
-joint_two_bone_idx = 103
+joint_one/bone_name = "right_arm"
+joint_one/bone_idx = 102
+joint_two/bone_name = "right_fore_arm"
+joint_two/bone_idx = 103
 
 [sub_resource type="SkeletonModification3DTwoBoneIK" id=9]
 enabled = true
@@ -67,10 +67,10 @@ tip_node = NodePath("LeftHandEnd/Node3D")
 auto_calculate_joint_length = true
 use_pole_node = true
 pole_node = NodePath("../../../Left_Arm_Pole")
-joint_one_bone_name = "left_arm"
-joint_one_bone_idx = 36
-joint_two_bone_name = "left_fore_arm"
-joint_two_bone_idx = 37
+joint_one/bone_name = "left_arm"
+joint_one/bone_idx = 36
+joint_two/bone_name = "left_fore_arm"
+joint_two/bone_idx = 37
 
 [sub_resource type="SkeletonModification3DLookAt" id=10]
 bone_name = "head"
@@ -135,6 +135,7 @@ target_nodepath = NodePath("../../../Head_Target/Right_Eye_Target")
 additional_rotation = Vector3( 90, 0, 0 )
 
 [sub_resource type="SkeletonModificationStack3D" id=15]
+enabled = true
 modification_count = 8
 modifications/0 = SubResource( 7 )
 modifications/1 = SubResource( 8 )
@@ -266,7 +267,7 @@ transform = Transform( 1, -2.32831e-10, 9.31323e-10, 0, 1, 0, -4.65661e-10, -2.9
 script = null
 
 [node name="RightHandEnd" type="Node3D" parent="AliciaSolid_vrm-051/Root/Skeleton" index="13"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.497403, 1.26257, 0.00711707 )
+transform = Transform( -0.43855, -0.50587, 0.742812, -0.755594, 0.655041, -2.98023e-08, -0.486572, -0.561264, -0.6695, 0.161847, 1.05275, -0.0277904 )
 script = ExtResource( 2 )
 bone_name = @"right_hand"
 
@@ -275,7 +276,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0, 0 )
 script = null
 
 [node name="LeftHandEnd" type="Node3D" parent="AliciaSolid_vrm-051/Root/Skeleton" index="14"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49742, 1.26387, 0.00751136 )
+transform = Transform( -0.432214, 0.504327, -0.74756, 0.759306, 0.650734, -2.98023e-08, 0.486463, -0.567626, -0.664195, -0.157364, 1.03845, -0.0244936 )
 script = ExtResource( 2 )
 bone_name = @"left_hand"
 

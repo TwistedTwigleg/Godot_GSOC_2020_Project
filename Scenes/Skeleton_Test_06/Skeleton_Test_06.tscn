@@ -17,28 +17,33 @@ shading_mode = 0
 albedo_color = Color( 0, 0.996078, 0.294118, 1 )
 
 [sub_resource type="SkeletonModification3DJiggle" id=5]
+execution_mode = 1
 target_nodepath = NodePath("../../../Jiggle_Target")
 jiggle_data_chain_length = 5
 use_colliders = true
 collision_mask = 1
 joint_data/0/bone_name = "bone_1"
 joint_data/0/bone_index = 0
+joint_data/0/roll = 0.0
 joint_data/0/override_defaults = false
 joint_data/1/bone_name = "bone_2"
 joint_data/1/bone_index = 1
+joint_data/1/roll = 45.0
 joint_data/1/override_defaults = false
 joint_data/2/bone_name = "bone_3"
 joint_data/2/bone_index = 2
+joint_data/2/roll = 0.0
 joint_data/2/override_defaults = false
 joint_data/3/bone_name = "bone_4"
 joint_data/3/bone_index = 3
+joint_data/3/roll = 135.0
 joint_data/3/override_defaults = false
 joint_data/4/bone_name = "bone_5"
 joint_data/4/bone_index = 4
+joint_data/4/roll = 0.0
 joint_data/4/override_defaults = false
 
 [sub_resource type="SkeletonModificationStack3D" id=6]
-execution_mode = 1
 modification_count = 1
 modifications/0 = SubResource( 5 )
 
@@ -97,7 +102,7 @@ transform = Transform( 0.864696, -0.320176, 0.387026, 0, 0.770513, 0.637424, -0.
 script = null
 
 [node name="Jiggle_Target" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.83972, 7.91668, -0.0101409 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28232, 8.24656, -0.0101409 )
 script = null
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="Jiggle_Target"]
@@ -111,12 +116,12 @@ transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.285361, 0, 0 )
 
 [node name="Skeleton" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature" index="0"]
 animate_physical_bones = false
-bones/4/bound_children = [ NodePath("BoneAttachment3D") ]
 modification_stack = SubResource( 6 )
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0 )
 bone_name = "bone_5"
+bone_idx = 4
 script = null
 
 [node name="TIP" type="Position3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton/BoneAttachment3D"]

@@ -1,6 +1,7 @@
-@tool
+#@tool
 class_name SkeletonModification3DGDScript
 extends SkeletonModification3D
+
 
 @export_node_path(Node3D) var rotation_target_path;
 @export var use_local_basis:bool = false;
@@ -9,7 +10,7 @@ var rotation_target:Node3D;
 
 func setup_modification(_stack):
 	#print ("Setup called from GDScript!");
-	pass;
+	return;
 
 func execute(_delta):
 	var stack : SkeletonModificationStack3D = get_modification_stack();
@@ -29,8 +30,8 @@ func execute(_delta):
 		
 		target_working_trans = skeleton.world_transform_to_global_pose(target_working_trans);
 		target_working_trans = skeleton.global_pose_to_local_pose(bone_idx, target_working_trans);
-		
-		local_override_trans.basis = target_working_trans.basis.orthonormalized().scaled(local_override_trans.basis.get_scale());
+		target_working_trans.basis = target_working_trans.basis.orthonormalized().scaled(local_override_trans.basis.get_scale());
+		local_override_trans.basis = target_working_trans.basis;
 		
 		skeleton.set_bone_local_pose_override(bone_idx, local_override_trans, stack.strength, self.enabled);
 		skeleton.force_update_bone_child_transform(bone_idx);
