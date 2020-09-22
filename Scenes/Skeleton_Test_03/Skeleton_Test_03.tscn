@@ -83,6 +83,9 @@ script = null
 [node name="CCDIK_Target" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.47473, 3.06747, 1.18166 )
 script = null
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="CCDIK_Target"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )

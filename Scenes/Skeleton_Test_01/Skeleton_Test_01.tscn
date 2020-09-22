@@ -91,7 +91,7 @@ material/0 = SubResource( 8 )
 script = null
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Godot_CCDIK_Arm/Robotic_Arm_Armature/Skeleton" index="2"]
-transform = Transform( -0.611732, 0.779554, -0.134457, -0.0168666, 0.157078, 0.987442, 0.790885, 0.606318, -0.0829413, -1.2468, 3.49349, -0.920657 )
+transform = Transform( -0.611732, 0.779554, -0.134457, -0.0168661, 0.157078, 0.987442, 0.790885, 0.606318, -0.0829417, -1.2468, 3.49349, -0.920658 )
 visible = false
 bone_name = "joint_2"
 bone_idx = 3
@@ -100,6 +100,9 @@ script = null
 [node name="LookAt_Target" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85471, 5.21677, -1.69458 )
 script = null
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="LookAt_Target"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -110,6 +113,9 @@ script = null
 [node name="LookAt_Target2" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82419, 4.22509, 1.9033 )
 script = null
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="LookAt_Target2"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )

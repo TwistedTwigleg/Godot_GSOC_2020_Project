@@ -32,22 +32,24 @@ target_nodepath = NodePath("../../../Spine_Target")
 fabrik_data_chain_length = 3
 joint_data/0/bone_name = "spine_1"
 joint_data/0/bone_index = 32
+joint_data/0/roll = 0.0
 joint_data/0/auto_calculate_length = true
 joint_data/0/use_tip_node = false
 joint_data/1/bone_name = "spine_2"
 joint_data/1/bone_index = 33
+joint_data/1/roll = 0.0
 joint_data/1/auto_calculate_length = true
 joint_data/1/use_tip_node = false
 joint_data/1/magnet_position = Vector3( 0, 0, 0 )
 joint_data/2/bone_name = "spine_3"
 joint_data/2/bone_index = 34
+joint_data/2/roll = 0.0
 joint_data/2/auto_calculate_length = true
 joint_data/2/use_tip_node = false
 joint_data/2/magnet_position = Vector3( 0, 0, 0 )
 joint_data/2/use_target_basis = false
 
 [sub_resource type="SkeletonModification3DTwoBoneIK" id=8]
-enabled = true
 target_nodepath = NodePath("../../../Right_Arm_Target")
 use_tip_node = true
 tip_node = NodePath("RightHandEnd/Node3D")
@@ -60,7 +62,6 @@ joint_two/bone_name = "right_fore_arm"
 joint_two/bone_idx = 103
 
 [sub_resource type="SkeletonModification3DTwoBoneIK" id=9]
-enabled = true
 target_nodepath = NodePath("../../../Left_Arm_Target")
 use_tip_node = true
 tip_node = NodePath("LeftHandEnd/Node3D")
@@ -86,18 +87,23 @@ damping = 0.5
 use_gravity = true
 joint_data/0/bone_name = "hair_2_l"
 joint_data/0/bone_index = 68
+joint_data/0/roll = 0.0
 joint_data/0/override_defaults = false
 joint_data/1/bone_name = "hair_3_l"
 joint_data/1/bone_index = 69
+joint_data/1/roll = 0.0
 joint_data/1/override_defaults = false
 joint_data/2/bone_name = "hair_4_l"
 joint_data/2/bone_index = 70
+joint_data/2/roll = 0.0
 joint_data/2/override_defaults = false
 joint_data/3/bone_name = "hair_5_l"
 joint_data/3/bone_index = 71
+joint_data/3/roll = 0.0
 joint_data/3/override_defaults = false
 joint_data/4/bone_name = "hair_6_l"
 joint_data/4/bone_index = 72
+joint_data/4/roll = 0.0
 joint_data/4/override_defaults = false
 
 [sub_resource type="SkeletonModification3DJiggle" id=12]
@@ -108,18 +114,23 @@ damping = 0.5
 use_gravity = true
 joint_data/0/bone_name = "hair_2_r"
 joint_data/0/bone_index = 76
+joint_data/0/roll = 0.0
 joint_data/0/override_defaults = false
 joint_data/1/bone_name = "hair_3_r"
 joint_data/1/bone_index = 77
+joint_data/1/roll = 0.0
 joint_data/1/override_defaults = false
 joint_data/2/bone_name = "hair_4_r"
 joint_data/2/bone_index = 78
+joint_data/2/roll = 0.0
 joint_data/2/override_defaults = false
 joint_data/3/bone_name = "hair_5_r"
 joint_data/3/bone_index = 79
+joint_data/3/roll = 0.0
 joint_data/3/override_defaults = false
 joint_data/4/bone_name = "hair_6_r"
 joint_data/4/bone_index = 80
+joint_data/4/roll = 0.0
 joint_data/4/override_defaults = false
 
 [sub_resource type="SkeletonModification3DLookAt" id=13]
@@ -170,6 +181,9 @@ script = null
 [node name="Head_Target" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.897905, 6.20589, 2.03227 )
 script = null
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="DEBUG" type="MeshInstance3D" parent="Head_Target"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -200,6 +214,9 @@ script = null
 [node name="Left_Arm_Target" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.472686, 3.87846, 0.281118 )
 script = null
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="DEBUG" type="MeshInstance3D" parent="Left_Arm_Target"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -210,6 +227,9 @@ script = null
 [node name="Left_Arm_Pole" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7491, 4.59118, -0.656124 )
 script = null
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="DEBUG" type="MeshInstance3D" parent="Left_Arm_Pole"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -220,6 +240,9 @@ script = null
 [node name="Right_Arm_Target" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.449335, 3.86917, 0.338939 )
 script = null
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="DEBUG" type="MeshInstance3D" parent="Right_Arm_Target"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -230,6 +253,9 @@ script = null
 [node name="Right_Arm_Pole" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12923, 4.62711, -0.767267 )
 script = null
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="DEBUG" type="MeshInstance3D" parent="Right_Arm_Pole"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -240,6 +266,9 @@ script = null
 [node name="Spine_Target" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0.166389 )
 script = null
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="Spine_Target"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -267,7 +296,7 @@ transform = Transform( 1, -2.32831e-10, 9.31323e-10, 0, 1, 0, -4.65661e-10, -2.9
 script = null
 
 [node name="RightHandEnd" type="Node3D" parent="AliciaSolid_vrm-051/Root/Skeleton" index="13"]
-transform = Transform( -0.43855, -0.50587, 0.742812, -0.755594, 0.655041, -2.98023e-08, -0.486572, -0.561264, -0.6695, 0.161847, 1.05275, -0.0277904 )
+transform = Transform( -0.445623, 0.75386, 0.48282, -0.731081, 0.00481302, -0.682273, -0.516663, -0.657017, 0.548989, 0.150236, 1.01954, -0.0532772 )
 script = ExtResource( 2 )
 bone_name = @"right_hand"
 
@@ -276,7 +305,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0, 0 )
 script = null
 
 [node name="LeftHandEnd" type="Node3D" parent="AliciaSolid_vrm-051/Root/Skeleton" index="14"]
-transform = Transform( -0.432214, 0.504327, -0.74756, 0.759306, 0.650734, -2.98023e-08, 0.486463, -0.567626, -0.664195, -0.157364, 1.03845, -0.0244936 )
+transform = Transform( -0.411079, -0.773733, -0.482028, 0.755657, 0.00654256, -0.654935, 0.509899, -0.633478, 0.581987, -0.159428, 1.03512, -0.0307564 )
 script = ExtResource( 2 )
 bone_name = @"left_hand"
 

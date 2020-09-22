@@ -105,6 +105,9 @@ script = null
 [node name="Jiggle_Target" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61635, 8.24656, 0.0404124 )
 script = null
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="Jiggle_Target"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -120,7 +123,7 @@ animate_physical_bones = false
 modification_stack = SubResource( 6 )
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton" index="1"]
-transform = Transform( 0.987225, -0.159335, 0.000387977, 0.159335, 0.987213, -0.00483782, 0.000387818, 0.00483784, 0.999988, -3.82404, 23.6931, 0.116109 )
+transform = Transform( 0.987171, -0.159667, 0.000389476, 0.159667, 0.987159, -0.00484791, 0.000389576, 0.00484791, 0.999988, -3.82669, 23.6927, 0.116189 )
 bone_name = "bone_5"
 bone_idx = 4
 script = null

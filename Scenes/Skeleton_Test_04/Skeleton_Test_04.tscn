@@ -41,6 +41,9 @@ script = null
 [node name="FARIK_TARGET" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.26176, 5.0891, 0.16263 )
 script = null
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="FARIK_TARGET"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -55,7 +58,7 @@ transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.285361, 0, 0 )
 modification_stack = ExtResource( 2 )
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton" index="1"]
-transform = Transform( 0.521585, 0.852918, -0.0219346, -0.852917, 0.520579, -0.039105, -0.0219346, 0.039105, 0.998994, 9.07098, 17.2329, 0.41589 )
+transform = Transform( 0.219653, 0.974922, -0.0357777, -0.974922, 0.218012, -0.0446987, -0.0357777, 0.0446986, 0.99836, 8.33895, 19.0483, 0.382328 )
 bone_name = "bone_5"
 bone_idx = 4
 script = null
