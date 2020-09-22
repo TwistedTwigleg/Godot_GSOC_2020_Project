@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Simple_Test_Rig/Godot_Simple_Test_Rig.glb" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Skeleton_Test_04/Test_04_Modification3DStack.tres" type="SkeletonModificationStack3D" id=2]
@@ -16,8 +16,6 @@ size = Vector2( 20, 20 )
 no_depth_test = true
 shading_mode = 0
 albedo_color = Color( 0, 0.996078, 0.294118, 1 )
-
-[sub_resource type="SphereMesh" id=5]
 
 [node name="Skeleton_Test_04" type="Node3D"]
 script = null
@@ -64,20 +62,6 @@ script = null
 
 [node name="TIP" type="Position3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton/BoneAttachment3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
-script = null
-
-[node name="External_BoneAttachment3D" type="BoneAttachment3D" parent="."]
-transform = Transform( 0.248751, 0.0249605, -5.72725e-05, -0.0249605, 0.248748, -0.00114439, -5.72725e-05, 0.00114439, 0.249997, -0.257291, 1.49974, 0.00128696 )
-bone_name = "bone_2"
-bone_idx = 1
-use_external_skeleton = true
-external_skeleton = NodePath("../Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton")
-script = null
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="External_BoneAttachment3D"]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
-mesh = SubResource( 5 )
-material/0 = null
 script = null
 
 [editable path="Godot_Simple_Test_Rig"]

@@ -44,6 +44,7 @@ joint_data/4/roll = 0.0
 joint_data/4/override_defaults = false
 
 [sub_resource type="SkeletonModificationStack3D" id=6]
+enabled = true
 modification_count = 1
 modifications/0 = SubResource( 5 )
 
@@ -102,7 +103,7 @@ transform = Transform( 0.864696, -0.320176, 0.387026, 0, 0.770513, 0.637424, -0.
 script = null
 
 [node name="Jiggle_Target" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28232, 8.24656, -0.0101409 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61635, 8.24656, 0.0404124 )
 script = null
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="Jiggle_Target"]
@@ -119,7 +120,7 @@ animate_physical_bones = false
 modification_stack = SubResource( 6 )
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0 )
+transform = Transform( 0.987225, -0.159335, 0.000387977, 0.159335, 0.987213, -0.00483782, 0.000387818, 0.00483784, 0.999988, -3.82404, 23.6931, 0.116109 )
 bone_name = "bone_5"
 bone_idx = 4
 script = null
@@ -129,7 +130,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
 script = null
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.87641, 5.21617, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61834, 3.91309, 0 )
 script = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
