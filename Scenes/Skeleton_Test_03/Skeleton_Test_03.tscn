@@ -1,22 +1,29 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/3D_Robotic_Arm/Godot_CCDIK_Arm.glb" type="PackedScene" id=1]
 
-[sub_resource type="Environment" id=1]
-ambient_light_source = 2
-ambient_light_color = Color( 0.48, 0.48, 0.48, 1 )
+[sub_resource type="PhysicalSkyMaterial" id=1]
 
-[sub_resource type="PlaneMesh" id=2]
+[sub_resource type="Sky" id=2]
+sky_material = SubResource( 1 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 2
+background_energy = 2.0
+sky = SubResource( 2 )
+ambient_light_source = 3
+
+[sub_resource type="PlaneMesh" id=4]
 size = Vector2( 20, 20 )
 
-[sub_resource type="SphereMesh" id=3]
+[sub_resource type="SphereMesh" id=5]
 
-[sub_resource type="StandardMaterial3D" id=4]
+[sub_resource type="StandardMaterial3D" id=6]
 no_depth_test = true
 shading_mode = 0
 albedo_color = Color( 0, 0.996078, 0.294118, 1 )
 
-[sub_resource type="SkeletonModification3DCCDIK" id=5]
+[sub_resource type="SkeletonModification3DCCDIK" id=7]
 target_nodepath = NodePath("../../../CCDIK_Target")
 tip_nodepath = NodePath("TipHolder/Tip")
 ccdik_data_chain_length = 7
@@ -52,11 +59,11 @@ joint_data/6/bone_index = 6
 joint_data/6/ccdik_axis = 0
 joint_data/6/enable_joint_constraint = false
 
-[sub_resource type="SkeletonModificationStack3D" id=6]
+[sub_resource type="SkeletonModificationStack3D" id=8]
 modification_count = 1
-modifications/0 = SubResource( 5 )
+modifications/0 = SubResource( 7 )
 
-[sub_resource type="StandardMaterial3D" id=7]
+[sub_resource type="StandardMaterial3D" id=9]
 albedo_color = Color( 0.333333, 0.843137, 0.278431, 1 )
 
 [node name="Skeleton_Test_03" type="Node3D"]
@@ -68,11 +75,11 @@ shadow_enabled = true
 script = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
+environment = SubResource( 3 )
 script = null
 
 [node name="FloorMesh" type="MeshInstance3D" parent="."]
-mesh = SubResource( 2 )
+mesh = SubResource( 4 )
 material/0 = null
 script = null
 
@@ -89,18 +96,18 @@ __meta__ = {
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="CCDIK_Target"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
-mesh = SubResource( 3 )
-material/0 = SubResource( 4 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 script = null
 
 [node name="Godot_CCDIK_Arm" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55982, 0, 0 )
 
 [node name="Skeleton" parent="Godot_CCDIK_Arm/Robotic_Arm_Armature" index="0"]
-modification_stack = SubResource( 6 )
+modification_stack = SubResource( 8 )
 
 [node name="Robotic_Arm" parent="Godot_CCDIK_Arm/Robotic_Arm_Armature/Skeleton" index="0"]
-material/0 = SubResource( 7 )
+material/0 = SubResource( 9 )
 
 [node name="TipHolder" type="BoneAttachment3D" parent="Godot_CCDIK_Arm/Robotic_Arm_Armature/Skeleton" index="1"]
 transform = Transform( 1, 6.15812e-15, -2.78181e-08, 5.96046e-08, 1, 1.58933e-08, 8.74228e-08, 4.37114e-08, 1, 0.502351, 6.58643, 0.626298 )

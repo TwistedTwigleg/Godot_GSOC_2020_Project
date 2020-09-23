@@ -1,22 +1,29 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Simple_Test_Rig/Godot_Simple_Test_Rig.glb" type="PackedScene" id=2]
 
-[sub_resource type="Environment" id=1]
-ambient_light_source = 2
-ambient_light_color = Color( 0.48, 0.48, 0.48, 1 )
+[sub_resource type="PhysicalSkyMaterial" id=1]
 
-[sub_resource type="PlaneMesh" id=2]
+[sub_resource type="Sky" id=2]
+sky_material = SubResource( 1 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 2
+background_energy = 2.0
+sky = SubResource( 2 )
+ambient_light_source = 3
+
+[sub_resource type="PlaneMesh" id=4]
 size = Vector2( 20, 20 )
 
-[sub_resource type="SphereMesh" id=3]
+[sub_resource type="SphereMesh" id=5]
 
-[sub_resource type="StandardMaterial3D" id=4]
+[sub_resource type="StandardMaterial3D" id=6]
 no_depth_test = true
 shading_mode = 0
 albedo_color = Color( 0, 0.996078, 0.294118, 1 )
 
-[sub_resource type="SkeletonModification3DJiggle" id=5]
+[sub_resource type="SkeletonModification3DJiggle" id=7]
 execution_mode = 1
 target_nodepath = NodePath("../../../Jiggle_Target")
 jiggle_data_chain_length = 5
@@ -43,16 +50,16 @@ joint_data/4/bone_index = 4
 joint_data/4/roll = 0.0
 joint_data/4/override_defaults = false
 
-[sub_resource type="SkeletonModificationStack3D" id=6]
+[sub_resource type="SkeletonModificationStack3D" id=8]
 enabled = true
 modification_count = 1
-modifications/0 = SubResource( 5 )
+modifications/0 = SubResource( 7 )
 
-[sub_resource type="SphereMesh" id=7]
+[sub_resource type="SphereMesh" id=9]
 
-[sub_resource type="SphereShape3D" id=8]
+[sub_resource type="SphereShape3D" id=10]
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=11]
 resource_name = "TEST"
 length = 4.0
 loop = true
@@ -90,11 +97,11 @@ shadow_enabled = true
 script = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
+environment = SubResource( 3 )
 script = null
 
 [node name="FloorMesh" type="MeshInstance3D" parent="."]
-mesh = SubResource( 2 )
+mesh = SubResource( 4 )
 material/0 = null
 script = null
 
@@ -111,8 +118,8 @@ __meta__ = {
 
 [node name="DEBUG_LookAt" type="MeshInstance3D" parent="Jiggle_Target"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
-mesh = SubResource( 3 )
-material/0 = SubResource( 4 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 script = null
 
 [node name="Godot_Simple_Test_Rig" parent="." instance=ExtResource( 2 )]
@@ -120,10 +127,10 @@ transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.285361, 0, 0 )
 
 [node name="Skeleton" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature" index="0"]
 animate_physical_bones = false
-modification_stack = SubResource( 6 )
+modification_stack = SubResource( 8 )
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton" index="1"]
-transform = Transform( 0.987171, -0.159667, 0.000389476, 0.159667, 0.987159, -0.00484791, 0.000389576, 0.00484791, 0.999988, -3.82669, 23.6927, 0.116189 )
+transform = Transform( 0.987489, -0.157686, 0.000379862, 0.157686, 0.987478, -0.00478777, 0.00037986, 0.00478777, 0.999989, -3.82484, 23.693, 0.116133 )
 bone_name = "bone_5"
 bone_idx = 4
 script = null
@@ -137,17 +144,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61834, 3.91309, 0 )
 script = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource( 7 )
+mesh = SubResource( 9 )
 material/0 = null
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource( 8 )
+shape = SubResource( 10 )
 script = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "TEST"
-anims/TEST = SubResource( 9 )
+anims/TEST = SubResource( 11 )
 script = null
 
 [editable path="Godot_Simple_Test_Rig"]

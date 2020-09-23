@@ -1,36 +1,44 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Assets/FPS_Gloves_and_Gun/FPS_Gloves/scene.gltf" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Skeleton_Test_09/Scene_09_SimplePlayer.gd" type="Script" id=2]
 [ext_resource path="res://Assets/FPS_Gloves_and_Gun/FPS_Gun/scene.gltf" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Skeleton_Test_09/Skeleton_Test_09_ModificationStack.tres" type="SkeletonModificationStack3D" id=4]
 
-[sub_resource type="Environment" id=1]
-ambient_light_source = 2
-ambient_light_color = Color( 0.48, 0.48, 0.48, 1 )
+[sub_resource type="PhysicalSkyMaterial" id=1]
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="Sky" id=2]
+sky_material = SubResource( 1 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 2
+background_energy = 2.0
+sky = SubResource( 2 )
+ambient_light_source = 3
+
+[sub_resource type="CubeMesh" id=4]
 size = Vector3( 40, 1, 40 )
 
-[sub_resource type="OpenSimplexNoise" id=3]
+[sub_resource type="OpenSimplexNoise" id=5]
 period = 0.2
 persistence = 1.0
 
-[sub_resource type="NoiseTexture" id=4]
+[sub_resource type="NoiseTexture" id=6]
 width = 256
 height = 256
-noise = SubResource( 3 )
+seamless = true
+noise = SubResource( 5 )
 
-[sub_resource type="StandardMaterial3D" id=5]
+[sub_resource type="StandardMaterial3D" id=7]
 albedo_color = Color( 0.662745, 1, 0.741176, 1 )
-albedo_texture = SubResource( 4 )
+albedo_texture = SubResource( 6 )
 uv1_scale = Vector3( 0.1, 0.1, 0.1 )
 uv1_triplanar = true
 
-[sub_resource type="ConcavePolygonShape3D" id=6]
+[sub_resource type="ConcavePolygonShape3D" id=8]
 data = PackedVector3Array( -20, 0.5, 20, 20, 0.5, 20, -20, -0.5, 20, 20, 0.5, 20, 20, -0.5, 20, -20, -0.5, 20, 20, 0.5, -20, -20, 0.5, -20, 20, -0.5, -20, -20, 0.5, -20, -20, -0.5, -20, 20, -0.5, -20, 20, 0.5, 20, 20, 0.5, -20, 20, -0.5, 20, 20, 0.5, -20, 20, -0.5, -20, 20, -0.5, 20, -20, 0.5, -20, -20, 0.5, 20, -20, -0.5, -20, -20, 0.5, 20, -20, -0.5, 20, -20, -0.5, -20, 20, 0.5, 20, -20, 0.5, 20, 20, 0.5, -20, -20, 0.5, 20, -20, 0.5, -20, 20, 0.5, -20, -20, -0.5, 20, 20, -0.5, 20, -20, -0.5, -20, 20, -0.5, 20, 20, -0.5, -20, -20, -0.5, -20 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 resource_name = "Idle"
 tracks/0/type = "value"
 tracks/0/path = NodePath("GunAssembly:translation")
@@ -57,7 +65,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 6, 49.665 ), Vector3( 0, 6, 49.665 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=10]
 resource_name = "Idle_To_Scope"
 tracks/0/type = "value"
 tracks/0/path = NodePath("GunAssembly:translation")
@@ -84,7 +92,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 6, 49.665 ), Vector3( 0, 14.4054, 49.6654 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=11]
 resource_name = "Scope_To_Idle"
 tracks/0/type = "value"
 tracks/0/path = NodePath("GunAssembly:translation")
@@ -111,18 +119,18 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 14.4054, 49.6654 ), Vector3( 0, 6, 49.665 ) ]
 }
 
-[sub_resource type="CubeMesh" id=10]
-
-[sub_resource type="StandardMaterial3D" id=11]
-albedo_color = Color( 0, 0.133333, 1, 1 )
-
-[sub_resource type="BoxShape3D" id=12]
-extents = Vector3( 5, 2, 2 )
+[sub_resource type="CubeMesh" id=12]
 
 [sub_resource type="StandardMaterial3D" id=13]
-albedo_color = Color( 0, 0.6, 1, 1 )
+albedo_color = Color( 0, 0.133333, 1, 1 )
 
 [sub_resource type="BoxShape3D" id=14]
+extents = Vector3( 5, 2, 2 )
+
+[sub_resource type="StandardMaterial3D" id=15]
+albedo_color = Color( 0, 0.6, 1, 1 )
+
+[sub_resource type="BoxShape3D" id=16]
 
 [node name="Skeleton_Test_09" type="Node3D"]
 script = null
@@ -133,20 +141,20 @@ shadow_enabled = true
 script = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
+environment = SubResource( 3 )
 script = null
 
 [node name="FloorMesh" type="MeshInstance3D" parent="."]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0 )
-mesh = SubResource( 2 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 7 )
 script = null
 
 [node name="StaticBody3D" type="StaticBody3D" parent="FloorMesh"]
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FloorMesh/StaticBody3D"]
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 script = null
 
 [node name="SimplePlayer" type="Node3D" parent="."]
@@ -321,9 +329,9 @@ script = null
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SimplePlayer/Body/Head"]
 autoplay = "Idle"
 playback_speed = 3.0
-anims/Idle = SubResource( 7 )
-anims/Idle_To_Scope = SubResource( 8 )
-anims/Scope_To_Idle = SubResource( 9 )
+anims/Idle = SubResource( 9 )
+anims/Idle_To_Scope = SubResource( 10 )
+anims/Scope_To_Idle = SubResource( 11 )
 script = null
 
 [node name="RigidBodies" type="Node3D" parent="."]
@@ -339,12 +347,12 @@ __meta__ = {
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBodies/Rigid_Big_Cube"]
 transform = Transform( 5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
-mesh = SubResource( 10 )
-material/0 = SubResource( 11 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBodies/Rigid_Big_Cube"]
-shape = SubResource( 12 )
+shape = SubResource( 14 )
 script = null
 
 [node name="Rigid_Cube" type="RigidBody3D" parent="RigidBodies"]
@@ -356,12 +364,12 @@ __meta__ = {
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBodies/Rigid_Cube"]
-mesh = SubResource( 10 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 15 )
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBodies/Rigid_Cube"]
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 script = null
 
 [node name="Rigid_Cube2" type="RigidBody3D" parent="RigidBodies"]
@@ -373,12 +381,12 @@ __meta__ = {
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBodies/Rigid_Cube2"]
-mesh = SubResource( 10 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 15 )
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBodies/Rigid_Cube2"]
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 script = null
 
 [node name="Rigid_Cube3" type="RigidBody3D" parent="RigidBodies"]
@@ -390,12 +398,12 @@ __meta__ = {
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBodies/Rigid_Cube3"]
-mesh = SubResource( 10 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 15 )
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBodies/Rigid_Cube3"]
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 script = null
 
 [node name="Rigid_Big_Cube2" type="RigidBody3D" parent="RigidBodies"]
@@ -408,12 +416,12 @@ __meta__ = {
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBodies/Rigid_Big_Cube2"]
 transform = Transform( 5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
-mesh = SubResource( 10 )
-material/0 = SubResource( 11 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBodies/Rigid_Big_Cube2"]
-shape = SubResource( 12 )
+shape = SubResource( 14 )
 script = null
 
 [node name="Rigid_Cube4" type="RigidBody3D" parent="RigidBodies"]
@@ -425,12 +433,12 @@ __meta__ = {
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBodies/Rigid_Cube4"]
-mesh = SubResource( 10 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 15 )
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBodies/Rigid_Cube4"]
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 script = null
 
 [node name="Rigid_Cube5" type="RigidBody3D" parent="RigidBodies"]
@@ -442,12 +450,12 @@ __meta__ = {
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBodies/Rigid_Cube5"]
-mesh = SubResource( 10 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 15 )
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBodies/Rigid_Cube5"]
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 script = null
 
 [node name="Rigid_Cube6" type="RigidBody3D" parent="RigidBodies"]
@@ -459,12 +467,12 @@ __meta__ = {
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBodies/Rigid_Cube6"]
-mesh = SubResource( 10 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 15 )
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBodies/Rigid_Cube6"]
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 script = null
 
 [node name="Rigid_Big_Cube3" type="RigidBody3D" parent="RigidBodies"]
@@ -477,12 +485,12 @@ __meta__ = {
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBodies/Rigid_Big_Cube3"]
 transform = Transform( 5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
-mesh = SubResource( 10 )
-material/0 = SubResource( 11 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBodies/Rigid_Big_Cube3"]
-shape = SubResource( 12 )
+shape = SubResource( 14 )
 script = null
 
 [node name="Rigid_Cube7" type="RigidBody3D" parent="RigidBodies"]
@@ -494,12 +502,12 @@ __meta__ = {
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBodies/Rigid_Cube7"]
-mesh = SubResource( 10 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 15 )
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBodies/Rigid_Cube7"]
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 script = null
 
 [node name="Rigid_Cube8" type="RigidBody3D" parent="RigidBodies"]
@@ -511,12 +519,12 @@ __meta__ = {
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBodies/Rigid_Cube8"]
-mesh = SubResource( 10 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 15 )
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBodies/Rigid_Cube8"]
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 script = null
 
 [node name="Rigid_Cube9" type="RigidBody3D" parent="RigidBodies"]
@@ -528,12 +536,12 @@ __meta__ = {
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBodies/Rigid_Cube9"]
-mesh = SubResource( 10 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 15 )
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBodies/Rigid_Cube9"]
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 script = null
 
 [node name="Rigid_Big_Cube4" type="RigidBody3D" parent="RigidBodies"]
@@ -546,12 +554,12 @@ __meta__ = {
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBodies/Rigid_Big_Cube4"]
 transform = Transform( 5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
-mesh = SubResource( 10 )
-material/0 = SubResource( 11 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBodies/Rigid_Big_Cube4"]
-shape = SubResource( 12 )
+shape = SubResource( 14 )
 script = null
 
 [node name="Rigid_Cube10" type="RigidBody3D" parent="RigidBodies"]
@@ -563,12 +571,12 @@ __meta__ = {
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBodies/Rigid_Cube10"]
-mesh = SubResource( 10 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 15 )
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBodies/Rigid_Cube10"]
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 script = null
 
 [node name="Rigid_Cube11" type="RigidBody3D" parent="RigidBodies"]
@@ -580,12 +588,12 @@ __meta__ = {
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBodies/Rigid_Cube11"]
-mesh = SubResource( 10 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 15 )
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBodies/Rigid_Cube11"]
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 script = null
 
 [node name="Rigid_Cube12" type="RigidBody3D" parent="RigidBodies"]
@@ -597,12 +605,12 @@ __meta__ = {
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBodies/Rigid_Cube12"]
-mesh = SubResource( 10 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 15 )
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBodies/Rigid_Cube12"]
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 script = null
 
 [editable path="SimplePlayer/Body/Head/Arms"]
