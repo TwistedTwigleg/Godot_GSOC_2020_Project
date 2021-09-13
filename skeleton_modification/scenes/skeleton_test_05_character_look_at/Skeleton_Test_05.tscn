@@ -1,0 +1,131 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8cx27oumb321"]
+
+[ext_resource type="PackedScene" uid="uid://ceccgkwb72a5w" path="res://skeleton_modification/art/Alicia_Solid/AliciaSolid_vrm-0.51.glb" id="1"]
+
+[sub_resource type="PhysicalSkyMaterial" id="1"]
+
+[sub_resource type="Sky" id="2"]
+sky_material = SubResource( "1" )
+
+[sub_resource type="Environment" id="3"]
+background_mode = 2
+background_energy = 2.0
+sky = SubResource( "2" )
+ambient_light_source = 3
+
+[sub_resource type="PlaneMesh" id="4"]
+size = Vector2(20, 20)
+
+[sub_resource type="SphereMesh" id="5"]
+
+[node name="Skeleton_Test_04" type="Node3D"]
+script = null
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.637841, 0.642996, -0.423929, 0, 0.550437, 0.834877, 0.770168, -0.532518, 0.351091, 0, 7.59687, 0)
+shadow_enabled = true
+script = null
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( "3" )
+script = null
+
+[node name="FloorMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource( "4" )
+surface_material_override/0 = null
+script = null
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.864696, -0.320176, 0.387026, 0, 0.770513, 0.637424, -0.502296, -0.551178, 0.666259, 3.49703, 9.11224, 5.24953)
+script = null
+
+[node name="Head_Target" type="Position3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.950145, 5.54053, 2.13226)
+script = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DEBUG_LookAt" type="MeshInstance3D" parent="Head_Target"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource( "5" )
+surface_material_override/0 = null
+script = null
+
+[node name="Eye_Right" type="Position3D" parent="Head_Target"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.416488, 0.0959697, 0.226356)
+script = null
+
+[node name="Eye_Left" type="Position3D" parent="Head_Target"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.117931, 0.0959697, 0.226356)
+script = null
+
+[node name="Left_Arm_Target" type="Position3D" parent="."]
+transform = Transform3D(0.627888, 0.745769, 0.222678, 0.120736, 0.189312, -0.974465, -0.768882, 0.63874, 0.0288261, 0.414623, 3.9666, 0.384857)
+script = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DEBUG_LookAt" type="MeshInstance3D" parent="Left_Arm_Target"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource( "5" )
+surface_material_override/0 = null
+script = null
+
+[node name="Right_Arm_Target" type="Position3D" parent="."]
+transform = Transform3D(0.446838, -0.862441, -0.237763, -0.0888427, 0.221679, -0.971064, 0.890193, 0.455032, 0.0224331, -0.461789, 3.97247, 0.331985)
+script = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DEBUG_LookAt" type="MeshInstance3D" parent="Right_Arm_Target"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource( "5" )
+surface_material_override/0 = null
+script = null
+
+[node name="Right_Leg_Target" type="Position3D" parent="."]
+transform = Transform3D(-0.899504, 0, 0.436912, 0, 1, 0, -0.436912, 0, -0.899504, -0.323537, 0.107812, 0.703775)
+script = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DEBUG_LookAt" type="MeshInstance3D" parent="Right_Leg_Target"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource( "5" )
+surface_material_override/0 = null
+script = null
+
+[node name="Left_Leg_Target" type="Position3D" parent="."]
+transform = Transform3D(-0.928803, 0, -0.370574, 0, 1, 0, 0.370574, 0, -0.928803, 0.463622, 0.121419, -0.369229)
+script = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DEBUG_LookAt" type="MeshInstance3D" parent="Left_Leg_Target"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource( "5" )
+surface_material_override/0 = null
+script = null
+
+[node name="Spine_Target" type="Position3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0.166389)
+script = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DEBUG_LookAt" type="MeshInstance3D" parent="Spine_Target"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource( "5" )
+surface_material_override/0 = null
+script = null
+
+[node name="AliciaSolid_vrm-051" parent="." instance=ExtResource( "1" )]
+transform = Transform3D(-4, 0, -1.30337e-06, 0, 4, 0, 1.30337e-06, 0, -4, 0, 0, 0)
+
+[editable path="AliciaSolid_vrm-051"]
