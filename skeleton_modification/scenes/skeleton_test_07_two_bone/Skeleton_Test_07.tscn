@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://i588nub81tss"]
+[gd_scene load_steps=9 format=3 uid="uid://i588nub81tss"]
 
 [ext_resource type="PackedScene" uid="uid://d3bhydm3b6s7t" path="res://skeleton_modification/art/Simple_Test_Rig/Godot_Simple_Test_Rig.glb" id="1"]
 
@@ -17,6 +17,22 @@ ambient_light_source = 3
 size = Vector2(20, 20)
 
 [sub_resource type="SphereMesh" id="5"]
+
+[sub_resource type="SkeletonModification3DTwoBoneIK" id="SkeletonModification3DTwoBoneIK_xp0eu"]
+target_nodepath = NodePath("../../../TwoBoneIK_Target")
+use_tip_node = true
+tip_node = NodePath("BoneAttachment3D/TwoBoneIK_Tip")
+auto_calculate_joint_length = true
+use_pole_node = true
+pole_node = NodePath("../../../TwoBoneIK_Pole")
+joint_one/bone_name = "Bone_01"
+joint_one/bone_idx = 0
+joint_two/bone_name = "Bone_04"
+joint_two/bone_idx = 3
+
+[sub_resource type="SkeletonModificationStack3D" id="SkeletonModificationStack3D_4kxqj"]
+modification_count = 1
+modifications/0 = SubResource( "SkeletonModification3DTwoBoneIK_xp0eu" )
 
 [node name="Skeleton_Test_07" type="Node3D"]
 script = null
@@ -40,7 +56,7 @@ transform = Transform3D(0.864696, -0.320176, 0.387026, 0, 0.770513, 0.637424, -0
 script = null
 
 [node name="TwoBoneIK_Target" type="Position3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08748, 5.34062, -2.18127)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08748, 4.45856, -0.514237)
 script = null
 __meta__ = {
 "_edit_group_": true
@@ -52,7 +68,33 @@ mesh = SubResource( "5" )
 surface_material_override/0 = null
 script = null
 
+[node name="TwoBoneIK_Pole" type="Position3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22851, 4.45856, -0.514237)
+script = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DEBUG_LookAt" type="MeshInstance3D" parent="TwoBoneIK_Pole"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource( "5" )
+surface_material_override/0 = null
+script = null
+
 [node name="Godot_Simple_Test_Rig" parent="." instance=ExtResource( "1" )]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.285361, 0, 0)
+
+[node name="Skeleton3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature" index="0"]
+modification_stack = SubResource( "SkeletonModificationStack3D_4kxqj" )
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 0)
+bone_name = "Bone_04"
+bone_idx = 3
+script = null
+
+[node name="TwoBoneIK_Tip" type="Position3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+script = null
 
 [editable path="Godot_Simple_Test_Rig"]
