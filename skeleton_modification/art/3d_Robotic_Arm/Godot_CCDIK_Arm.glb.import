@@ -4,11 +4,13 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dkupbcsssngjs"
-valid=false
+path="res://.godot/imported/Godot_CCDIK_Arm.glb-280f55543b272d87055db03fee97ac05.scn"
 
 [deps]
 
 source_file="res://skeleton_modification/art/3d_Robotic_Arm/Godot_CCDIK_Arm.glb"
+dest_files=["res://.godot/imported/Godot_CCDIK_Arm.glb-280f55543b272d87055db03fee97ac05.scn"]
+
 [params]
 
 nodes/root_type="Node3D"

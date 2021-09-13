@@ -4,11 +4,13 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ceccgkwb72a5w"
-valid=false
+path="res://.godot/imported/AliciaSolid_vrm-0.51.glb-cab9b4a8a5ed92c29f90e870207a8261.scn"
 
 [deps]
 
 source_file="res://skeleton_modification/art/Alicia_Solid/AliciaSolid_vrm-0.51.glb"
+dest_files=["res://.godot/imported/AliciaSolid_vrm-0.51.glb-cab9b4a8a5ed92c29f90e870207a8261.scn"]
+
 [params]
 
 nodes/root_type="Node3D"

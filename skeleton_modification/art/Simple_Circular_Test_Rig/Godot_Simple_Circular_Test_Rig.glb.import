@@ -4,11 +4,13 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b48su2cu25ca8"
-valid=false
+path="res://.godot/imported/Godot_Simple_Circular_Test_Rig.glb-2f8ac682250004f9f77f2c8247911cd4.scn"
 
 [deps]
 
 source_file="res://skeleton_modification/art/Simple_Circular_Test_Rig/Godot_Simple_Circular_Test_Rig.glb"
+dest_files=["res://.godot/imported/Godot_Simple_Circular_Test_Rig.glb-2f8ac682250004f9f77f2c8247911cd4.scn"]
+
 [params]
 
 nodes/root_type="Node3D"

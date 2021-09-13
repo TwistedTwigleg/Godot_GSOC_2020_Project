@@ -4,11 +4,13 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://idmsg80cn3qg"
-valid=false
+path="res://.godot/imported/scene.gltf-f71edeb430af663dea4509b56d761efb.scn"
 
 [deps]
 
 source_file="res://skeleton_modification/art/FPS_Gloves_and_Gun/FPS_Gun/scene.gltf"
+dest_files=["res://.godot/imported/scene.gltf-f71edeb430af663dea4509b56d761efb.scn"]
+
 [params]
 
 nodes/root_type="Node3D"

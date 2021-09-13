@@ -4,11 +4,13 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://d3bhydm3b6s7t"
-valid=false
+path="res://.godot/imported/Godot_Simple_Test_Rig.glb-132ae8ae1449be00386aa441c5ad9036.scn"
 
 [deps]
 
 source_file="res://skeleton_modification/art/Simple_Test_Rig/Godot_Simple_Test_Rig.glb"
+dest_files=["res://.godot/imported/Godot_Simple_Test_Rig.glb-132ae8ae1449be00386aa441c5ad9036.scn"]
+
 [params]
 
 nodes/root_type="Node3D"

@@ -4,11 +4,13 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cyr6t4wt054ge"
-valid=false
+path="res://.godot/imported/Fox.glb-81ae4261bd8b9cd691dd051aedbd8d2b.scn"
 
 [deps]
 
 source_file="res://skeleton_modification/art/3d_Fox/Fox.glb"
+dest_files=["res://.godot/imported/Fox.glb-81ae4261bd8b9cd691dd051aedbd8d2b.scn"]
+
 [params]
 
 nodes/root_type="Node3D"
