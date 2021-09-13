@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dxyo4gxkr07rt"]
 
-[ext_resource type="PackedScene" path="res://skeleton_modification/art/Simple_Test_Rig/Godot_Simple_Test_Rig.glb" id="1_vbygp"]
+[ext_resource type="PackedScene" uid="uid://d3bhydm3b6s7t" path="res://skeleton_modification/art/Simple_Test_Rig/Godot_Simple_Test_Rig.glb" id="1_vbygp"]
 
 [sub_resource type="PhysicalSkyMaterial" id="1"]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://d3c5e6i1cucth"]
 
 [ext_resource type="Script" path="res://skeleton_modification/scenes/skeleton_test_09_character_fps/Scene_09_SimplePlayer.gd" id="1_wobfe"]
-[ext_resource type="PackedScene" path="res://skeleton_modification/art/FPS_Gloves_and_Gun/FPS_Gloves/scene.gltf" id="2_jebpi"]
-[ext_resource type="PackedScene" path="res://skeleton_modification/art/FPS_Gloves_and_Gun/FPS_Gun/scene.gltf" id="3_dkx54"]
+[ext_resource type="PackedScene" uid="uid://ct12fkyi12s5m" path="res://skeleton_modification/art/FPS_Gloves_and_Gun/FPS_Gloves/scene.gltf" id="2_jebpi"]
+[ext_resource type="PackedScene" uid="uid://idmsg80cn3qg" path="res://skeleton_modification/art/FPS_Gloves_and_Gun/FPS_Gun/scene.gltf" id="3_dkx54"]
 
 [sub_resource type="PhysicalSkyMaterial" id="1"]
 

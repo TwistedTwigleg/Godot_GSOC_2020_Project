@@ -1,94 +1,61 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://b4w8ht6g2d41p"]
 
-[ext_resource type="PackedScene" path="res://skeleton_modification/art/3d_Fox/Fox.glb" id="1"]
+[ext_resource type="PackedScene" uid="uid://cyr6t4wt054ge" path="res://skeleton_modification/art/3d_Fox/Fox.glb" id="1"]
 
-[sub_resource type="PhysicalSkyMaterial" id=1]
+[sub_resource type="PhysicalSkyMaterial" id="1"]
 
-[sub_resource type="Sky" id=2]
-sky_material = SubResource( 1 )
+[sub_resource type="Sky" id="2"]
+sky_material = SubResource( "1" )
 
-[sub_resource type="Environment" id=3]
+[sub_resource type="Environment" id="3"]
 background_mode = 2
 background_energy = 2.0
-sky = SubResource( 2 )
+sky = SubResource( "2" )
 ambient_light_source = 3
 
-[sub_resource type="PlaneMesh" id=4]
-size = Vector2( 20, 20 )
+[sub_resource type="PlaneMesh" id="4"]
+size = Vector2(20, 20)
 
-[sub_resource type="SkeletonModification3DLookAt" id=5]
-bone_name = "b_head_5"
-bone_index = 6
-target_nodepath = NodePath("../../../LookAtTarget")
-
-[sub_resource type="SkeletonModificationStack3D" id=6]
-enabled = true
-modification_count = 1
-modifications/0 = SubResource( 5 )
-
-[sub_resource type="SphereMesh" id=7]
-
-[sub_resource type="StandardMaterial3D" id=8]
-albedo_color = Color( 0.0509804, 0.933333, 0.105882, 1 )
+[sub_resource type="SphereMesh" id="7"]
 
 [node name="Skeleton_Test_02" type="Node3D"]
 script = null
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform( 0.386655, 0.682488, 0.620248, -0.427356, -0.463389, 0.776298, 0.81723, -0.565226, 0.112493, 0, 7.59687, 0 )
+transform = Transform3D(0.386655, 0.682488, 0.620248, -0.427356, -0.463389, 0.776298, 0.81723, -0.565226, 0.112493, 0, 7.59687, 0)
 shadow_enabled = true
 script = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 3 )
+environment = SubResource( "3" )
 script = null
 
 [node name="FloorMesh" type="MeshInstance3D" parent="."]
-mesh = SubResource( 4 )
-material/0 = null
+mesh = SubResource( "4" )
+surface_material_override/0 = null
 script = null
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform( 0.864696, -0.320176, 0.387026, 0, 0.770513, 0.637424, -0.502296, -0.551178, 0.666259, 3.49703, 9.11224, 5.24953 )
+transform = Transform3D(0.864696, -0.320176, 0.387026, 0, 0.770513, 0.637424, -0.502296, -0.551178, 0.666259, 3.49703, 9.11224, 5.24953)
 script = null
 
-[node name="Fox" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+[node name="Fox" parent="." instance=ExtResource( "1" )]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 
-[node name="Skeleton" parent="Fox/root" index="0"]
-bones/2/pose = Transform( 0.999909, -4.43365e-05, -0.0134675, -2.45869e-05, 0.999987, -0.00511755, 0.0134676, 0.00511742, 0.999896, -1.91823, -3.07898, -0.223195 )
-bones/3/pose = Transform( 0.999993, 0.00376379, -0.000217782, -0.00376379, 0.999993, -2.06524e-05, 0.000217703, 2.14719e-05, 1, 0, 0, 0 )
-bones/4/pose = Transform( 0.999808, -0.0196092, 0.000208917, 0.0196092, 0.999808, -3.4704e-05, -0.000208196, 3.8794e-05, 1, 0, 0, 0 )
-bones/5/pose = Transform( 0.999978, 0.00456316, 0.00474145, -0.00460795, 0.999944, 0.00947742, -0.00469793, -0.00949906, 0.999944, 0, 0, 0 )
-bones/6/pose = Transform( 0.99992, -0.0124008, 0.00232768, 0.0124, 0.999923, 0.000359438, -0.00233196, -0.000330546, 0.999997, 0, 0, 0 )
-bones/7/pose = Transform( 0.897946, 0.439667, -0.0196116, -0.439801, 0.89809, -0.00291291, 0.0163322, 0.0112408, 0.999803, 0, 0, 0 )
-bones/8/pose = Transform( 0.997679, 0.0680983, -5.13623e-09, -0.0680983, 0.997679, -7.5275e-08, -1.79345e-12, 7.545e-08, 1, 0, 0, 0 )
-bones/9/pose = Transform( 0.987815, -0.15557, 0.00449766, 0.155619, 0.987716, -0.0141236, -0.00224519, 0.0146514, 0.99989, 0, 0, 0 )
-bones/10/pose = Transform( 0.850194, -0.526205, -0.0166741, 0.526283, 0.850309, 0.000330824, 0.0140041, -0.00905656, 0.999861, 0, 0, 0 )
-bones/11/pose = Transform( 0.997566, 0.0697282, -4.76916e-09, -0.0697282, 0.997566, -7.52988e-08, -4.92898e-10, 7.54481e-08, 1, 0, 0, 0 )
-bones/12/pose = Transform( 0.869888, 0.492899, -0.0186192, -0.492738, 0.870085, 0.0127327, 0.0224762, -0.00190161, 0.999746, 0, 0, 0 )
-bones/13/pose = Transform( 0.874559, 0.48492, 4.64345e-08, -0.48492, 0.874559, -6.34776e-07, -3.48425e-07, 5.32632e-07, 1, 0, 0, 0 )
-bones/14/pose = Transform( 0.988339, 0.152272, -8.98329e-19, -0.152272, 0.988339, -2.20283e-18, 5.52424e-19, 2.31393e-18, 1, 0, 0, 0 )
-bones/15/pose = Transform( 0.942735, 0.333544, -1.61213e-19, -0.333544, 0.942735, 2.58015e-18, 1.01257e-18, -2.37863e-18, 1, 0, 0, 0 )
-bones/16/pose = Transform( 0.929067, 0.369525, -0.0169436, -0.369507, 0.929218, 0.00426023, 0.0173185, 0.00230274, 0.999847, 0, 0, 0 )
-bones/17/pose = Transform( 0.989191, -0.146634, 3.75003e-08, 0.146634, 0.989191, 5.73931e-09, -3.79365e-08, -1.78469e-10, 1, 0, 0, 0 )
-bones/18/pose = Transform( 0.984258, -0.176712, 0.00287932, 0.176718, 0.984259, -0.00221084, -0.00244331, 0.00268487, 0.999994, 0, 0, 0 )
-bones/20/pose = Transform( 0.754421, -0.656105, -0.0193676, 0.656318, 0.754448, 0.00742237, 0.00974202, -0.0183109, 0.999785, 0, 0, 0 )
-bones/21/pose = Transform( 0.886237, 0.463232, 3.41513e-08, -0.463232, 0.886237, -1.72901e-08, -3.82755e-08, -4.96842e-10, 1, 0, 0, 0 )
-bones/22/pose = Transform( 0.964604, 0.263693, 0.00219057, -0.263672, 0.964586, -0.00710099, -0.00398547, 0.00627205, 0.999972, 0, 0, 0 )
-modification_stack = SubResource( 6 )
+[node name="AnimationPlayer" parent="Fox" index="1"]
+blend_times = []
 
 [node name="LookAtTarget" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34066, 3.50979, 4.05685 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34066, 3.50979, 4.05685)
 script = null
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LookAtTarget"]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
-mesh = SubResource( 7 )
-material/0 = SubResource( 8 )
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource( "7" )
+surface_material_override/0 = null
 script = null
 
 [editable path="Fox"]

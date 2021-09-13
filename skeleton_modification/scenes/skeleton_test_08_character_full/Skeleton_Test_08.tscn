@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://dk67adaxfasfy"]
 
-[ext_resource type="PackedScene" path="res://skeleton_modification/art/Alicia_Solid/AliciaSolid_vrm-0.51.glb" id="1"]
+[ext_resource type="PackedScene" uid="uid://ceccgkwb72a5w" path="res://skeleton_modification/art/Alicia_Solid/AliciaSolid_vrm-0.51.glb" id="1"]
 
 [sub_resource type="PhysicalSkyMaterial" id="1"]
 

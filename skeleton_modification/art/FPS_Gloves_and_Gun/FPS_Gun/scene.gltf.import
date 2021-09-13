@@ -4,13 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://idmsg80cn3qg"
-path="res://.godot/imported/scene.gltf-f71edeb430af663dea4509b56d761efb.scn"
+valid=false
 
 [deps]
 
 source_file="res://skeleton_modification/art/FPS_Gloves_and_Gun/FPS_Gun/scene.gltf"
-dest_files=["res://.godot/imported/scene.gltf-f71edeb430af663dea4509b56d761efb.scn"]
-
 [params]
 
 nodes/root_type="Node3D"
@@ -23,7 +21,6 @@ meshes/light_baking=0
 meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
 animation/import=true
-animation/point_parent_bone_to_children=true
 animation/bake_reset_animation=true
 animation/fps=15
 import_script/path=""
