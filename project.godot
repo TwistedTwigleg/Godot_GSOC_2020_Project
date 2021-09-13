@@ -12,7 +12,7 @@ _global_script_classes=[{
 "base": "SkeletonModification3D",
 "class": &"SkeletonModification3DGDScript",
 "language": &"GDScript",
-"path": "res://skeleton_modification/scenes/skeleton_test_09/BoneAdjustmentMod.gd"
+"path": "res://skeleton_modification/scenes/skeleton_test_09_character_fps/BoneAdjustmentMod.gd"
 }]
 _global_script_class_icons={
 "SkeletonModification3DGDScript": ""
