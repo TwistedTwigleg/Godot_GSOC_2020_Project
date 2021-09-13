@@ -2,17 +2,18 @@
 
 importer="texture"
 type="StreamTexture2D"
-path.s3tc="res://.import/material_4_normal.png-6f6546df851825a6b3d4701b05a52819.s3tc.stex"
-path.etc2="res://.import/material_4_normal.png-6f6546df851825a6b3d4701b05a52819.etc2.stex"
+uid="uid://f6hvrwuee44f"
+path.s3tc="res://.godot/imported/material_4_normal.png-6f6546df851825a6b3d4701b05a52819.s3tc.stex"
+path.etc2="res://.godot/imported/material_4_normal.png-6f6546df851825a6b3d4701b05a52819.etc2.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": ["s3tc", "etc2"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/FPS_Gloves_and_Gun/FPS_Gun/textures/material_4_normal.png"
-dest_files=[ "res://.import/material_4_normal.png-6f6546df851825a6b3d4701b05a52819.s3tc.stex", "res://.import/material_4_normal.png-6f6546df851825a6b3d4701b05a52819.etc2.stex" ]
+dest_files=["res://.godot/imported/material_4_normal.png-6f6546df851825a6b3d4701b05a52819.s3tc.stex", "res://.godot/imported/material_4_normal.png-6f6546df851825a6b3d4701b05a52819.etc2.stex"]
 
 [params]
 
@@ -29,7 +30,7 @@ roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/invert_color=false
+process/normal_map_invert_y=false
 process/HDR_as_SRGB=false
 process/size_limit=0
 detect_3d/compress_to=0
