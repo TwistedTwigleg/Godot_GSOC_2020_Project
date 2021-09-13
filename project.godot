@@ -12,7 +12,7 @@ _global_script_classes=[{
 "base": "SkeletonModification3D",
 "class": &"SkeletonModification3DGDScript",
 "language": &"GDScript",
-"path": "res://Scenes/Skeleton_Test_09/BoneAdjustmentMod.gd"
+"path": "res://skeleton_modification/scenes/skeleton_test_09/BoneAdjustmentMod.gd"
 }]
 _global_script_class_icons={
 "SkeletonModification3DGDScript": ""
@@ -20,7 +20,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GSOC_Test_Project"
+config/name="Skeleton Modification Project"
 config/icon="res://icon.png"
 
 [display]
