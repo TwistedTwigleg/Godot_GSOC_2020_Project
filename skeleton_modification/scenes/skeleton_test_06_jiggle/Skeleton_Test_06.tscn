@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6qn4h8xhsios"]
+[gd_scene load_steps=12 format=3 uid="uid://b6qn4h8xhsios"]
 
 [ext_resource type="PackedScene" uid="uid://d3bhydm3b6s7t" path="res://skeleton_modification/art/Simple_Test_Rig/Godot_Simple_Test_Rig.glb" id="2"]
 
@@ -17,6 +17,36 @@ ambient_light_source = 3
 size = Vector2(20, 20)
 
 [sub_resource type="SphereMesh" id="5"]
+
+[sub_resource type="SkeletonModification3DJiggle" id="SkeletonModification3DJiggle_ileu1"]
+target_nodepath = NodePath("../../../Jiggle_Target")
+jiggle_data_chain_length = 5
+use_colliders = true
+collision_mask = 1
+joint_data/0/bone_name = "Bone_01"
+joint_data/0/bone_index = 0
+joint_data/0/roll = 0.0
+joint_data/0/override_defaults = false
+joint_data/1/bone_name = "Bone_02"
+joint_data/1/bone_index = 1
+joint_data/1/roll = 0.0
+joint_data/1/override_defaults = false
+joint_data/2/bone_name = "Bone_03"
+joint_data/2/bone_index = 2
+joint_data/2/roll = 0.0
+joint_data/2/override_defaults = false
+joint_data/3/bone_name = "Bone_04"
+joint_data/3/bone_index = 3
+joint_data/3/roll = 0.0
+joint_data/3/override_defaults = false
+joint_data/4/bone_name = "Bone_05"
+joint_data/4/bone_index = 4
+joint_data/4/roll = 0.0
+joint_data/4/override_defaults = false
+
+[sub_resource type="SkeletonModificationStack3D" id="SkeletonModificationStack3D_qlcgv"]
+modification_count = 1
+modifications/0 = SubResource( "SkeletonModification3DJiggle_ileu1" )
 
 [sub_resource type="SphereMesh" id="9"]
 
@@ -73,7 +103,7 @@ transform = Transform3D(0.864696, -0.320176, 0.387026, 0, 0.770513, 0.637424, -0
 script = null
 
 [node name="Jiggle_Target" type="Position3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61635, 8.24656, 0.0404124)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.723396, 8.24656, 0.0404124)
 script = null
 __meta__ = {
 "_edit_group_": true
@@ -87,6 +117,9 @@ script = null
 
 [node name="Godot_Simple_Test_Rig" parent="." instance=ExtResource( "2" )]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.285361, 0, 0)
+
+[node name="Skeleton3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature" index="0"]
+modification_stack = SubResource( "SkeletonModificationStack3D_qlcgv" )
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61834, 3.91309, 0)

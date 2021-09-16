@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxyo4gxkr07rt"]
+[gd_scene load_steps=8 format=3 uid="uid://dxyo4gxkr07rt"]
 
 [ext_resource type="PackedScene" uid="uid://d3bhydm3b6s7t" path="res://skeleton_modification/art/Simple_Test_Rig/Godot_Simple_Test_Rig.glb" id="1_vbygp"]
+[ext_resource type="SkeletonModificationStack3D" uid="uid://c252it1hbqu17" path="res://skeleton_modification/scenes/skeleton_test_04_arm_fabrik/Test_04_Modification3DStack.tres" id="2_kuo2g"]
 
 [sub_resource type="PhysicalSkyMaterial" id="1"]
 
@@ -40,7 +41,7 @@ transform = Transform3D(0.864696, -0.320176, 0.387026, 0, 0.770513, 0.637424, -0
 script = null
 
 [node name="FARIK_TARGET" type="Position3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.26176, 5.0891, 0.16263)
+transform = Transform3D(0.353553, -0.353553, 0.866025, 0.707107, 0.707107, 0, -0.612372, 0.612372, 0.5, -2.67117, 4.01463, -1.52156)
 script = null
 __meta__ = {
 "_edit_group_": true
@@ -54,5 +55,18 @@ script = null
 
 [node name="Godot_Simple_Test_Rig" parent="." instance=ExtResource( "1_vbygp" )]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.285361, 0, 0)
+
+[node name="Skeleton3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature" index="0"]
+modification_stack = ExtResource( "2_kuo2g" )
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
+bone_name = "Bone_05"
+bone_idx = 4
+script = null
+
+[node name="FABRIK_Tip" type="Position3D" parent="Godot_Simple_Test_Rig/Simple_Test_Rig_Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+script = null
 
 [editable path="Godot_Simple_Test_Rig"]

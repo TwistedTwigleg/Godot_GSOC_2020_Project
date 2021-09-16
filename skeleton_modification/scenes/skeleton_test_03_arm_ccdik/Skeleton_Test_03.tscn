@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8ce10h8h0oki"]
+[gd_scene load_steps=9 format=3 uid="uid://c8ce10h8h0oki"]
 
 [ext_resource type="PackedScene" uid="uid://dkupbcsssngjs" path="res://skeleton_modification/art/3d_Robotic_Arm/Godot_CCDIK_Arm.glb" id="1"]
 
@@ -17,6 +17,39 @@ ambient_light_source = 3
 size = Vector2(20, 20)
 
 [sub_resource type="SphereMesh" id="5"]
+
+[sub_resource type="SkeletonModification3DCCDIK" id="SkeletonModification3DCCDIK_hhva8"]
+target_nodepath = NodePath("../../../CCDIK_Target")
+tip_nodepath = NodePath("BoneAttachment3D/CCDIK_Tip")
+ccdik_data_chain_length = 6
+joint_data/0/bone_name = "Joint_00"
+joint_data/0/bone_index = 1
+joint_data/0/ccdik_axis = 1
+joint_data/0/enable_joint_constraint = false
+joint_data/1/bone_name = "Joint_01"
+joint_data/1/bone_index = 2
+joint_data/1/ccdik_axis = 0
+joint_data/1/enable_joint_constraint = false
+joint_data/2/bone_name = "Joint_02"
+joint_data/2/bone_index = 3
+joint_data/2/ccdik_axis = 0
+joint_data/2/enable_joint_constraint = false
+joint_data/3/bone_name = "Joint_03"
+joint_data/3/bone_index = 4
+joint_data/3/ccdik_axis = 1
+joint_data/3/enable_joint_constraint = false
+joint_data/4/bone_name = "Joint_04"
+joint_data/4/bone_index = 5
+joint_data/4/ccdik_axis = 0
+joint_data/4/enable_joint_constraint = false
+joint_data/5/bone_name = "Joint_05"
+joint_data/5/bone_index = 6
+joint_data/5/ccdik_axis = 2
+joint_data/5/enable_joint_constraint = false
+
+[sub_resource type="SkeletonModificationStack3D" id="SkeletonModificationStack3D_0r3s3"]
+modification_count = 1
+modifications/0 = SubResource( "SkeletonModification3DCCDIK_hhva8" )
 
 [node name="Skeleton_Test_03" type="Node3D"]
 script = null
@@ -40,7 +73,7 @@ transform = Transform3D(0.864696, -0.320176, 0.387026, 0, 0.770513, 0.637424, -0
 script = null
 
 [node name="CCDIK_Target" type="Position3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.47473, 3.06747, 1.18166)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0705804, 5.45002, 3.24274)
 script = null
 __meta__ = {
 "_edit_group_": true
@@ -54,5 +87,18 @@ script = null
 
 [node name="Godot_CCDIK_Arm" parent="." instance=ExtResource( "1" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55982, 0, 0)
+
+[node name="Skeleton3D" parent="Godot_CCDIK_Arm/Robotic_Arm_Armature" index="0"]
+modification_stack = SubResource( "SkeletonModificationStack3D_0r3s3" )
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Godot_CCDIK_Arm/Robotic_Arm_Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 6.15812e-15, -2.78181e-08, 5.96046e-08, 1, 1.58933e-08, 8.74228e-08, 4.37114e-08, 1, 0.502351, 6.58643, 0.626298)
+bone_name = "Joint_05"
+bone_idx = 6
+script = null
+
+[node name="CCDIK_Tip" type="Position3D" parent="Godot_CCDIK_Arm/Robotic_Arm_Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 2.75286e-21, 0, -1.38943e-15, 1, -5.32907e-15, -4.26326e-14, -2.84217e-14, 1, 0, 0.781424, 1.78814e-07)
+script = null
 
 [editable path="Godot_CCDIK_Arm"]
